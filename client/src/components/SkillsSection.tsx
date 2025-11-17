@@ -53,8 +53,9 @@ export function SkillsSection() {
   const isInView = useInView(ref, { once: true, margin: "-100px" });
 
   return (
-    <section id="skills" className="py-24 px-6 lg:px-8" ref={ref}>
-      <div className="max-w-7xl mx-auto">
+    <section id="skills" className="py-24 px-6 lg:px-8 relative" ref={ref}>
+      <div className="absolute inset-0 cyber-grid opacity-30" />
+      <div className="max-w-7xl mx-auto relative z-10">
         <motion.h2
           initial={{ opacity: 0, y: 20 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
@@ -84,7 +85,7 @@ export function SkillsSection() {
                     animate={isInView ? { opacity: 1, x: 0 } : {}}
                     transition={{ duration: 0.3, delay: categoryIndex * 0.1 + skillIndex * 0.05 }}
                   >
-                    <Card className="p-4 hover-elevate active-elevate-2 cursor-pointer" data-testid={`card-skill-${skill.name.toLowerCase().replace(/\s+/g, '-')}`}>
+                    <Card className="p-4 hover-elevate active-elevate-2 cursor-pointer border-primary/20" data-testid={`card-skill-${skill.name.toLowerCase().replace(/\s+/g, '-')}`}>
                       <div className="flex items-center gap-3">
                         <skill.icon className="h-6 w-6 text-primary" />
                         <span className="font-mono text-sm">{skill.name}</span>

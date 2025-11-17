@@ -32,7 +32,23 @@ const certifications = [
     credentialUrl: "#"
   },
   {
-    title: "Certificate of Appreciation: Event Manager (CSE Workshop)",
+    title: "Certificate of Appreciation: Speaker (Data Structures Workshop)",
+    issuer: "University at Buffalo",
+    date: "Issued Apr 2025",
+    credentialId: "",
+    skills: ["Public Speaking", "Data Structures", "Teaching"],
+    credentialUrl: "#"
+  },
+  {
+    title: "Certificate of Appreciation: Speaker (MySQL Workshop)",
+    issuer: "University at Buffalo",
+    date: "Issued Mar 2025",
+    credentialId: "",
+    skills: ["Public Speaking", "MySQL", "Database Design"],
+    credentialUrl: "#"
+  },
+  {
+    title: "Certificate of Appreciation: Event Manager (Docker Workshop)",
     issuer: "University at Buffalo",
     date: "Issued May 2025",
     credentialId: "",
@@ -68,8 +84,9 @@ export function CertificationsSection() {
   };
 
   return (
-    <section id="certifications" className="py-24 px-6 lg:px-8 bg-card" ref={ref}>
-      <div className="max-w-7xl mx-auto">
+    <section id="certifications" className="py-24 px-6 lg:px-8 bg-card relative" ref={ref}>
+      <div className="absolute inset-0 cyber-grid opacity-50" />
+      <div className="max-w-7xl mx-auto relative z-10">
         <motion.h2
           initial={{ opacity: 0, y: 20 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
@@ -119,7 +136,7 @@ export function CertificationsSection() {
                 transition={{ duration: 0.5, delay: index * 0.1 }}
                 className="flex-none w-80 snap-start"
               >
-                <Card className="p-6 h-full hover-elevate" data-testid={`card-cert-${index}`}>
+                <Card className="p-6 h-full hover-elevate neon-glow border-primary/30" data-testid={`card-cert-${index}`}>
                   <div className="flex items-start gap-3 mb-4">
                     <Award className="h-6 w-6 text-primary flex-shrink-0" />
                     <div className="flex-1">

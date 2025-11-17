@@ -21,8 +21,9 @@ export function AboutSection() {
   const isInView = useInView(ref, { once: true, margin: "-100px" });
 
   return (
-    <section id="about" className="py-24 px-6 lg:px-8 bg-card" ref={ref}>
-      <div className="max-w-6xl mx-auto">
+    <section id="about" className="py-24 px-6 lg:px-8 bg-card relative" ref={ref}>
+      <div className="absolute inset-0 cyber-grid opacity-50" />
+      <div className="max-w-6xl mx-auto relative z-10">
         <motion.h2
           initial={{ opacity: 0, y: 20 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
@@ -73,7 +74,7 @@ export function AboutSection() {
                 >
                   <Badge
                     variant="outline"
-                    className="text-base px-4 py-2 bg-primary/5 border-primary/30 text-primary hover:bg-primary/10"
+                    className="text-base px-4 py-2 bg-primary/5 border-primary/30 text-primary hover:bg-primary/10 hover:neon-glow transition-all"
                     data-testid={`badge-skill-${skill.toLowerCase().replace(/[^a-z0-9]/g, '-')}`}
                   >
                     {skill}

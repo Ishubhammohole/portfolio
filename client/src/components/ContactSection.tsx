@@ -34,8 +34,9 @@ export function ContactSection() {
   };
 
   return (
-    <section id="contact" className="py-24 px-6 lg:px-8" ref={ref}>
-      <div className="max-w-4xl mx-auto">
+    <section id="contact" className="py-24 px-6 lg:px-8 relative" ref={ref}>
+      <div className="absolute inset-0 cyber-grid opacity-30" />
+      <div className="max-w-4xl mx-auto relative z-10">
         <motion.h2
           initial={{ opacity: 0, y: 20 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
@@ -51,7 +52,7 @@ export function ContactSection() {
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.5, delay: 0.2 }}
         >
-          <Card className="p-8">
+          <Card className="p-8 border-primary/30 neon-glow">
             <form onSubmit={handleSubmit} className="space-y-6">
               <div className="grid md:grid-cols-2 gap-6">
                 <div>
@@ -131,30 +132,36 @@ export function ContactSection() {
                 Or connect with me on
               </p>
               <div className="flex justify-center gap-4">
-                <Button
-                  variant="outline"
-                  size="icon"
-                  className="rounded-full"
-                  data-testid="button-github"
-                >
-                  <Github className="h-5 w-5" />
-                </Button>
-                <Button
-                  variant="outline"
-                  size="icon"
-                  className="rounded-full"
-                  data-testid="button-linkedin"
-                >
-                  <Linkedin className="h-5 w-5" />
-                </Button>
-                <Button
-                  variant="outline"
-                  size="icon"
-                  className="rounded-full"
-                  data-testid="button-email"
-                >
-                  <Mail className="h-5 w-5" />
-                </Button>
+                <a href="https://github.com/shubham-mohole" target="_blank" rel="noopener noreferrer">
+                  <Button
+                    variant="outline"
+                    size="icon"
+                    className="rounded-full hover:border-primary hover:text-primary"
+                    data-testid="button-github"
+                  >
+                    <Github className="h-5 w-5" />
+                  </Button>
+                </a>
+                <a href="https://linkedin.com/in/shubham-mohole" target="_blank" rel="noopener noreferrer">
+                  <Button
+                    variant="outline"
+                    size="icon"
+                    className="rounded-full hover:border-primary hover:text-primary"
+                    data-testid="button-linkedin"
+                  >
+                    <Linkedin className="h-5 w-5" />
+                  </Button>
+                </a>
+                <a href="mailto:shubhammohole@example.com">
+                  <Button
+                    variant="outline"
+                    size="icon"
+                    className="rounded-full hover:border-primary hover:text-primary"
+                    data-testid="button-email"
+                  >
+                    <Mail className="h-5 w-5" />
+                  </Button>
+                </a>
               </div>
             </div>
           </Card>

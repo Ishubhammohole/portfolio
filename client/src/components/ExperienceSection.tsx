@@ -68,8 +68,9 @@ export function ExperienceSection() {
   const isInView = useInView(ref, { once: true, margin: "-100px" });
 
   return (
-    <section id="experience" className="py-24 px-6 lg:px-8" ref={ref}>
-      <div className="max-w-5xl mx-auto">
+    <section id="experience" className="py-24 px-6 lg:px-8 relative" ref={ref}>
+      <div className="absolute inset-0 cyber-grid opacity-30" />
+      <div className="max-w-5xl mx-auto relative z-10">
         <motion.h2
           initial={{ opacity: 0, y: 20 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}

@@ -50,8 +50,9 @@ export function ProjectsSection() {
   const isInView = useInView(ref, { once: true, margin: "-100px" });
 
   return (
-    <section id="projects" className="py-24 px-6 lg:px-8 bg-card" ref={ref}>
-      <div className="max-w-7xl mx-auto">
+    <section id="projects" className="py-24 px-6 lg:px-8 bg-card relative" ref={ref}>
+      <div className="absolute inset-0 cyber-grid opacity-50" />
+      <div className="max-w-7xl mx-auto relative z-10">
         <motion.h2
           initial={{ opacity: 0, y: 20 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
@@ -71,9 +72,7 @@ export function ProjectsSection() {
               transition={{ duration: 0.6, delay: index * 0.2 }}
             >
               <Card
-                className={`overflow-hidden hover-elevate ${
-                  index % 2 === 0 ? "" : ""
-                }`}
+                className="overflow-hidden hover-elevate border-primary/20"
                 data-testid={`card-project-${project.title.toLowerCase().replace(/\s+/g, '-')}`}
               >
                 <div className={`grid md:grid-cols-2 gap-0 ${index % 2 === 1 ? "md:grid-flow-dense" : ""}`}>
