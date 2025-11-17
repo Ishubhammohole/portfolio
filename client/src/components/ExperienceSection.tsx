@@ -116,9 +116,18 @@ export function ExperienceSection() {
 
                   <ul className="space-y-3 mb-4">
                     {exp.achievements.map((achievement, achIndex) => (
-                      <li key={achIndex} className="flex gap-3 text-sm text-muted-foreground" data-testid={`text-achievement-${achIndex}`}>
-                        <achievement.icon className="h-4 w-4 text-primary flex-shrink-0 mt-0.5" />
-                        <span>{achievement.text}</span>
+                      <li key={achIndex} className="flex gap-3 text-sm" data-testid={`text-achievement-${achIndex}`}>
+                        <achievement.icon className="h-5 w-5 text-primary flex-shrink-0 mt-0.5 neon-glow" />
+                        <span className="text-muted-foreground">
+                          {achievement.highlight && (
+                            <>
+                              {achievement.text.split(achievement.highlight)[0]}
+                              <span className="text-primary font-bold">{achievement.highlight}</span>
+                              {achievement.text.split(achievement.highlight)[1]}
+                            </>
+                          )}
+                          {!achievement.highlight && achievement.text}
+                        </span>
                       </li>
                     ))}
                   </ul>

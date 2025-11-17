@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import { useInView } from "framer-motion";
 import { useRef } from "react";
-import { SiJavascript, SiTypescript, SiReact, SiAngular, SiNodedotjs, SiPython, SiSpring, SiDocker, SiKubernetes, SiJenkins, SiAmazonwebservices, SiMysql, SiPostgresql, SiRedis, SiMongodb, SiTensorflow, SiPytorch, SiOpencv, SiOracle } from "react-icons/si";
+import { SiJavascript, SiTypescript, SiReact, SiAngular, SiPython, SiSpring, SiDocker, SiKubernetes, SiJenkins, SiAmazonwebservices, SiMysql, SiPostgresql, SiRedis, SiMongodb, SiTensorflow, SiPytorch, SiOpencv, SiOracle, SiFramer, SiTailwindcss } from "react-icons/si";
 import { Coffee } from "lucide-react";
 import { Card } from "@/components/ui/card";
 
@@ -13,12 +13,13 @@ const skillCategories = [
       { name: "TypeScript", icon: SiTypescript },
       { name: "React", icon: SiReact },
       { name: "Angular", icon: SiAngular },
+      { name: "Framer Motion", icon: SiFramer },
+      { name: "Tailwind CSS", icon: SiTailwindcss },
     ],
   },
   {
     category: "Backend/DevOps",
     skills: [
-      { name: "Node.js", icon: SiNodedotjs },
       { name: "Java", icon: Coffee },
       { name: "Spring Boot", icon: SiSpring },
       { name: "Docker", icon: SiDocker },
