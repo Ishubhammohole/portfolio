@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import { Github, Linkedin, Mail, Download } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import profileImage from "@assets/generated_images/Professional_developer_headshot_portrait_182ff1b9.png";
+import profileImage from "@assets/images/profile.jpg";
 
 export function HeroSection() {
   const scrollToContact = () => {
@@ -104,7 +104,7 @@ export function HeroSection() {
                 <Github className="h-5 w-5" />
               </Button>
             </a>
-            <a href="https://linkedin.com/in/shubham-mohole" target="_blank" rel="noopener noreferrer">
+            <a href="https://www.linkedin.com/in/shubham-mohole-245a501b2/" target="_blank" rel="noopener noreferrer">
               <Button
                 variant="ghost"
                 size="icon"

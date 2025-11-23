@@ -142,7 +142,7 @@ export function ContactSection() {
                     <Github className="h-5 w-5" />
                   </Button>
                 </a>
-                <a href="https://linkedin.com/in/shubham-mohole" target="_blank" rel="noopener noreferrer">
+                <a href="https://www.linkedin.com/in/shubham-mohole-245a501b2/" target="_blank" rel="noopener noreferrer">
                   <Button
                     variant="outline"
                     size="icon"

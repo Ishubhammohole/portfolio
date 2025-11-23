@@ -5,10 +5,10 @@ import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Github, ExternalLink } from "lucide-react";
-import rippleImage from "@assets/generated_images/Ripple_Policy_Simulator_dashboard_1810abab.png";
-import llmImage from "@assets/generated_images/LLM_Text-to-Image_system_interface_d00506e4.png";
-import devSyncImage from "@assets/generated_images/DevSync_AI_platform_interface_11d6b569.png";
-import microservicesImage from "@assets/generated_images/Microservices_architecture_diagram_visualization_f22f0478.png";
+import rippleImage from "@assets/images/projects/ripple-policy-simulator.png";
+import llmImage from "@assets/images/projects/text-to-image-system.png";
+import devSyncImage from "@assets/images/projects/devsync-platform.png";
+import microservicesImage from "@assets/images/projects/microservices-platform.png";
 
 const projects = [
   {

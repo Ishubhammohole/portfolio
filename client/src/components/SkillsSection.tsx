@@ -10,7 +10,6 @@ const skillCategories = [
     category: "Frontend",
     skills: [
       { name: "JavaScript", icon: SiJavascript },
-      { name: "TypeScript", icon: SiTypescript },
       { name: "React", icon: SiReact },
       { name: "Angular", icon: SiAngular },
       { name: "Framer Motion", icon: SiFramer },

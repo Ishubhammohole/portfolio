@@ -196,16 +196,31 @@
 
   .neon-glow {
     box-shadow: 
-      0 0 10px rgba(100, 255, 218, 0.3),
-      0 0 20px rgba(100, 255, 218, 0.2),
-      0 0 30px rgba(100, 255, 218, 0.1);
+      0 0 8px rgba(100, 255, 218, 0.25),
+      0 0 16px rgba(100, 255, 218, 0.15),
+      0 0 24px rgba(100, 255, 218, 0.08);
   }
 
   .neon-text {
     text-shadow: 
-      0 0 10px rgba(100, 255, 218, 0.5),
-      0 0 20px rgba(100, 255, 218, 0.3),
-      0 0 30px rgba(100, 255, 218, 0.2);
+      0 0 8px rgba(100, 255, 218, 0.4),
+      0 0 16px rgba(100, 255, 218, 0.25),
+      0 0 24px rgba(100, 255, 218, 0.15);
+  }
+
+  /* Mobile-optimized neon effects */
+  @media (max-width: 768px) {
+    .neon-glow {
+      box-shadow: 
+        0 0 6px rgba(100, 255, 218, 0.2),
+        0 0 12px rgba(100, 255, 218, 0.1);
+    }
+
+    .neon-text {
+      text-shadow: 
+        0 0 6px rgba(100, 255, 218, 0.35),
+        0 0 12px rgba(100, 255, 218, 0.2);
+    }
   }
 }
 

@@ -1,6 +1,8 @@
 {
-  "name": "rest-express",
+  "name": "portfolio-website",
   "version": "1.0.0",
+  "description": "Personal portfolio website for Shubham Mohole",
+  "author": "Shubham Mohole",
   "type": "module",
   "license": "MIT",
   "scripts": {

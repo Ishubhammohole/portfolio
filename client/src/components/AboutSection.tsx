@@ -13,7 +13,9 @@ const topSkills = [
   "Docker",
   "Kubernetes",
   "AWS",
-  "PostgreSQL"
+  "PostgreSQL",
+  "Framer Motion",
+  "Tailwind CSS"
 ];
 
 export function AboutSection() {
