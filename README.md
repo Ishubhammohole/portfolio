@@ -98,9 +98,9 @@ MIT License - feel free to use this project as inspiration for your own portfoli
 
 ## 📧 Contact
 
-- **Email**: shubhammohole@buffalo.edu
+- **Email**: shumoh2000@gmail.com
 - **LinkedIn**: [linkedin.com/in/shubham-mohole-245a501b2](https://www.linkedin.com/in/shubham-mohole-245a501b2/)
-- **GitHub**: [github.com/shubham-mohole](https://github.com/shubham-mohole)
+- **GitHub**: [github.com/Ishubhammohole](https://github.com/Ishubhammohole)
 
 ---
 
