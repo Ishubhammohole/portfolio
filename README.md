@@ -1,107 +1,93 @@
-# Shubham Mohole - Portfolio Website
+# Portfolio Website
 
-A modern, responsive portfolio website showcasing my work as a Full-Stack Developer and Computer Science graduate student.
+My personal portfolio showcasing my work as a full-stack developer and computer science graduate student.
 
-## 🚀 Tech Stack
+## About
 
-- **Frontend**: React 18, TypeScript
-- **Styling**: Tailwind CSS, Custom CSS
+I'm Shubham Mohole, a full-stack developer with 2+ years of experience at Infosys and currently pursuing my Master's in Computer Science at the University at Buffalo. I specialize in building scalable web applications, cloud infrastructure, and AI/ML solutions.
+
+## Tech Stack
+
+- **Frontend**: React 18 with TypeScript
+- **Styling**: Tailwind CSS with custom themes
 - **Animations**: Framer Motion
-- **UI Components**: Radix UI
-- **Backend**: Express.js, Node.js
-- **Build Tool**: Vite
+- **UI Components**: Radix UI primitives
+- **Backend**: Express.js with Node.js
 - **Database**: PostgreSQL with Drizzle ORM
+- **Build Tool**: Vite
 
-## 📋 Features
+## Features
 
-- Responsive design optimized for all devices
+- Responsive design that works on all devices
+- Dark mode with a cyber-themed aesthetic
 - Smooth animations and transitions
-- Dark mode with cyber-themed aesthetics
 - Interactive project showcase
 - Contact form with validation
-- Professional certifications display
-- Skills and experience timeline
+- Professional experience timeline
+- Skills and certifications display
 
-## 🛠️ Installation
+## Getting Started
 
 ```bash
 # Clone the repository
 git clone https://github.com/shubham-mohole/portfolio.git
-
-# Navigate to project directory
 cd portfolio
 
 # Install dependencies
 npm install
-```
 
-## 💻 Development
-
-```bash
 # Start development server
 npm run dev
+```
 
-# Build for production
+The app will be available at `http://localhost:5173`
+
+## Building for Production
+
+```bash
+# Build the application
 npm run build
 
 # Start production server
 npm start
-
-# Type checking
-npm run check
 ```
 
-The development server will start at `http://localhost:5000`
-
-## 📁 Project Structure
+## Project Structure
 
 ```
-├── client/              # Frontend React application
-│   ├── src/
-│   │   ├── components/  # React components
-│   │   ├── pages/       # Page components
-│   │   └── lib/         # Utility functions
+├── src/
+│   ├── components/
+│   │   ├── sections/     # Page sections (Hero, About, etc.)
+│   │   ├── ui/          # Reusable UI components
+│   │   └── ...          # Layout components
+│   ├── hooks/           # Custom React hooks
+│   ├── utils/           # Utility functions
+│   ├── styles/          # CSS and styling
+│   └── assets/          # Static assets
 ├── server/              # Backend Express server
-├── public/              # Static assets
-│   └── images/          # Image assets
 ├── shared/              # Shared types and utilities
-└── dist/                # Production build output
+└── public/              # Public assets
 ```
 
-## 🎨 Design
+## Design Philosophy
 
-The portfolio features a modern "Cyber Architect" theme with:
-- Dark color scheme with cyan/green accents
-- Subtle neon glow effects
+The portfolio features a modern "cyber architect" aesthetic with:
+- Dark color scheme with cyan and green accents
+- Subtle neon glow effects and animations
 - Grid-based background patterns
-- Smooth scroll animations
-- Card-based layouts
+- Clean, card-based layouts
+- Smooth scrolling between sections
 
-## 📱 Responsive Design
-
-Fully responsive across all breakpoints:
-- Mobile: 320px - 768px
-- Tablet: 768px - 1024px
-- Desktop: 1024px+
-
-## 🔧 Configuration
-
-Key configuration files:
-- `vite.config.ts` - Vite build configuration
-- `tailwind.config.ts` - Tailwind CSS customization
-- `tsconfig.json` - TypeScript configuration
-- `drizzle.config.ts` - Database configuration
-
-## 📄 License
-
-MIT License - feel free to use this project as inspiration for your own portfolio!
-
-## 📧 Contact
+## Contact
 
 - **Email**: shumoh2000@gmail.com
 - **LinkedIn**: [linkedin.com/in/shubham-mohole-245a501b2](https://www.linkedin.com/in/shubham-mohole-245a501b2/)
 - **GitHub**: [github.com/Ishubhammohole](https://github.com/Ishubhammohole)
 
+## License
+
+MIT License - feel free to use this as inspiration for your own portfolio!
+
 ---
 
-Built with ❤️ by Shubham Mohole
+Built with ❤️ using React, TypeScript, and Tailwind CSS
