@@ -18,15 +18,15 @@ export function ProjectsSection() {
       animate={isInView ? { opacity: 1, y: 0 } : {}}
       transition={{ duration: 0.6, delay: sectionDelay + index * 0.1 }}
     >
-      <Card className="p-8 hover-elevate border-primary/20 bg-card/50 backdrop-blur-sm">
+      <Card className="p-8 hover-elevate border-primary/10 bg-card/50 backdrop-blur-sm transition-all duration-300">
         <div className="space-y-6">
           {/* Header */}
           <div>
-            <div className="flex items-start justify-between mb-2">
-              <h3 className="text-2xl font-bold text-foreground">
+            <div className="flex items-start justify-between mb-3">
+              <h3 className="text-2xl font-bold text-foreground leading-tight">
                 {project.title}
               </h3>
-              <Badge variant="outline" className="bg-primary/5 border-primary/30 text-primary font-mono text-sm">
+              <Badge variant="outline" className="bg-primary/5 border-primary/20 text-primary font-mono text-sm">
                 {project.timeframe}
               </Badge>
             </div>
@@ -36,10 +36,10 @@ export function ProjectsSection() {
           </div>
 
           {/* Highlights */}
-          <div className="space-y-3">
+          <div className="space-y-4">
             {project.highlights.map((highlight: string, idx: number) => (
-              <div key={idx} className="flex items-start gap-3">
-                <div className="w-2 h-2 rounded-full bg-primary mt-2 flex-shrink-0" />
+              <div key={idx} className="flex items-start gap-4">
+                <div className="w-1.5 h-1.5 rounded-full bg-primary mt-2.5 flex-shrink-0" />
                 <p className="text-muted-foreground leading-relaxed">{highlight}</p>
               </div>
             ))}
@@ -51,7 +51,7 @@ export function ProjectsSection() {
               <Badge
                 key={tech}
                 variant="outline"
-                className="bg-primary/5 border-primary/30 text-primary"
+                className="bg-primary/5 border-primary/20 text-primary text-sm"
               >
                 {tech}
               </Badge>
@@ -62,7 +62,7 @@ export function ProjectsSection() {
           <div className="flex gap-3 pt-2">
             {project.githubUrl && (
               <a href={project.githubUrl} target="_blank" rel="noopener noreferrer">
-                <Button variant="outline" size="sm" className="hover:border-primary hover:text-primary">
+                <Button variant="outline" size="sm" className="hover:border-primary hover:text-primary transition-colors">
                   {project.githubUrl.includes('/pull/') ? (
                     <>
                       <GitPullRequest className="mr-2 h-4 w-4" />
@@ -79,7 +79,7 @@ export function ProjectsSection() {
             )}
             {project.liveUrl && (
               <a href={project.liveUrl} target="_blank" rel="noopener noreferrer">
-                <Button variant="outline" size="sm" className="hover:border-primary hover:text-primary">
+                <Button variant="outline" size="sm" className="hover:border-primary hover:text-primary transition-colors">
                   <ExternalLink className="mr-2 h-4 w-4" />
                   Live Demo
                 </Button>
@@ -92,30 +92,30 @@ export function ProjectsSection() {
   );
 
   return (
-    <section id="projects" className="py-24 px-6 lg:px-8 bg-card relative" ref={ref}>
-      <div className="absolute inset-0 cyber-grid opacity-50" />
-      <div className="max-w-6xl mx-auto relative z-10">
+    <section id="projects" className="py-24 px-6 lg:px-8 bg-card/30 relative" ref={ref}>
+      <div className="absolute inset-0 cyber-grid opacity-20" />
+      <div className="max-w-5xl mx-auto relative z-10">
         <motion.h2
           initial={{ opacity: 0, y: 20 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.5 }}
-          className="text-4xl lg:text-5xl font-bold mb-16 text-center"
+          transition={{ duration: 0.6 }}
+          className="text-3xl md:text-4xl lg:text-5xl font-bold mb-16 text-center"
         >
           Featured Projects
         </motion.h2>
 
         {/* Featured Projects */}
-        <div className="space-y-12 mb-20">
+        <div className="space-y-16 mb-24">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={isInView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.5, delay: 0.2 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
           >
-            <div className="flex items-center gap-4 mb-8">
+            <div className="flex items-center gap-6 mb-12">
               <h3 className="text-2xl font-bold text-primary">Featured Projects</h3>
-              <div className="flex-1 h-px bg-gradient-to-r from-primary/50 to-transparent" />
+              <div className="flex-1 h-px bg-gradient-to-r from-primary/30 to-transparent" />
             </div>
-            <div className="grid gap-8">
+            <div className="grid gap-12">
               {profile.projects.featured.map((project, index) => 
                 renderProjectCard(project, index, 0.3)
               )}
@@ -124,17 +124,17 @@ export function ProjectsSection() {
         </div>
 
         {/* Open Source */}
-        <div className="space-y-12">
+        <div className="space-y-16">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={isInView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.5, delay: 0.6 }}
+            transition={{ duration: 0.6, delay: 0.6 }}
           >
-            <div className="flex items-center gap-4 mb-8">
+            <div className="flex items-center gap-6 mb-12">
               <h3 className="text-2xl font-bold text-primary">Open Source</h3>
-              <div className="flex-1 h-px bg-gradient-to-r from-primary/50 to-transparent" />
+              <div className="flex-1 h-px bg-gradient-to-r from-primary/30 to-transparent" />
             </div>
-            <div className="grid gap-8">
+            <div className="grid gap-12">
               {profile.projects.openSource.map((project, index) => 
                 renderProjectCard(project, index, 0.8)
               )}

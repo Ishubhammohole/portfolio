@@ -44,33 +44,32 @@ export function ExperienceSection() {
 
   return (
     <section id="experience" className="py-24 px-6 lg:px-8 relative" ref={ref}>
-      <div className="absolute inset-0 cyber-grid opacity-30" />
       <div className="max-w-5xl mx-auto relative z-10">
         <motion.h2
           initial={{ opacity: 0, y: 20 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.5 }}
-          className="text-4xl lg:text-5xl font-bold mb-12 text-center"
+          transition={{ duration: 0.6 }}
+          className="text-3xl md:text-4xl lg:text-5xl font-bold mb-16 text-center"
           data-testid="text-experience-heading"
         >
           Experience & Education
         </motion.h2>
 
         <div className="relative">
-          <div className="absolute left-8 top-0 bottom-0 w-0.5 bg-primary/20" />
+          <div className="absolute left-8 top-0 bottom-0 w-0.5 bg-primary/30" />
 
-          <div className="space-y-12">
+          <div className="space-y-8">
             {allExperiences.map((exp, index) => (
               <motion.div
                 key={`${exp.company}-${index}`}
                 initial={{ opacity: 0, x: -20 }}
                 animate={isInView ? { opacity: 1, x: 0 } : {}}
-                transition={{ duration: 0.5, delay: index * 0.2 }}
+                transition={{ duration: 0.6, delay: index * 0.2 }}
                 className="relative pl-20"
               >
                 <div className="absolute left-5 top-6 w-6 h-6 rounded-full bg-primary border-4 border-background" />
 
-                <Card className="p-6" data-testid={`card-experience-${exp.company.toLowerCase().replace(/\s+/g, '-')}`}>
+                <Card className="p-6 border-border/50 bg-card/50 backdrop-blur-sm" data-testid={`card-experience-${exp.company.toLowerCase().replace(/\s+/g, '-')}`}>
                   <div className="flex items-start gap-4 mb-4">
                     {exp.type === "work" ? (
                       <Briefcase className="h-6 w-6 text-primary flex-shrink-0 mt-1" />
@@ -83,7 +82,7 @@ export function ExperienceSection() {
                       </h3>
                       <p className="text-primary font-semibold">{exp.company}</p>
                       <p className="text-sm text-muted-foreground">{exp.location}</p>
-                      <Badge variant="outline" className="mt-2 bg-primary/5 border-primary/30 text-primary">
+                      <Badge variant="outline" className="mt-2 bg-primary/10 border-primary/30 text-primary">
                         {exp.period}
                       </Badge>
                     </div>
@@ -92,12 +91,12 @@ export function ExperienceSection() {
                   <ul className="space-y-3 mb-4">
                     {exp.achievements.map((achievement, achIndex) => (
                       <li key={achIndex} className="flex gap-3 text-sm" data-testid={`text-achievement-${achIndex}`}>
-                        <achievement.icon className="h-5 w-5 text-primary flex-shrink-0 mt-0.5 neon-glow" />
+                        <achievement.icon className="h-4 w-4 text-primary flex-shrink-0 mt-0.5" />
                         <span className="text-muted-foreground">
                           {achievement.highlight && (
                             <>
                               {achievement.text.split(achievement.highlight)[0]}
-                              <span className="text-primary font-bold">{achievement.highlight}</span>
+                              <span className="text-primary font-semibold">{achievement.highlight}</span>
                               {achievement.text.split(achievement.highlight)[1]}
                             </>
                           )}

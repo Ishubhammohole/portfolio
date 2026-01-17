@@ -55,27 +55,26 @@ export function SkillsSection() {
 
   return (
     <section id="skills" className="py-24 px-6 lg:px-8 relative" ref={ref}>
-      <div className="absolute inset-0 cyber-grid opacity-30" />
-      <div className="max-w-7xl mx-auto relative z-10">
+      <div className="max-w-5xl mx-auto relative z-10">
         <motion.h2
           initial={{ opacity: 0, y: 20 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.5 }}
-          className="text-4xl lg:text-5xl font-bold mb-12 text-center"
+          transition={{ duration: 0.6 }}
+          className="text-3xl md:text-4xl lg:text-5xl font-bold mb-16 text-center"
           data-testid="text-skills-heading"
         >
           Skills & Technologies
         </motion.h2>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
           {skillCategories.length > 0 ? skillCategories.map((category, categoryIndex) => (
             <motion.div
               key={category.category}
               initial={{ opacity: 0, y: 20 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.5, delay: categoryIndex * 0.1 }}
+              transition={{ duration: 0.6, delay: categoryIndex * 0.1 }}
             >
-              <h3 className="text-xl font-bold mb-4 text-primary" data-testid={`text-category-${category.category.toLowerCase().replace(/\//g, '-')}`}>
+              <h3 className="text-lg font-semibold mb-4 text-primary" data-testid={`text-category-${category.category.toLowerCase().replace(/\//g, '-')}`}>
                 {category.category}
               </h3>
               <div className="space-y-3">
@@ -84,12 +83,12 @@ export function SkillsSection() {
                     key={skill.name}
                     initial={{ opacity: 0, x: -10 }}
                     animate={isInView ? { opacity: 1, x: 0 } : {}}
-                    transition={{ duration: 0.3, delay: categoryIndex * 0.1 + skillIndex * 0.05 }}
+                    transition={{ duration: 0.4, delay: categoryIndex * 0.1 + skillIndex * 0.05 }}
                   >
-                    <Card className="p-4 hover-elevate active-elevate-2 cursor-pointer border-primary/20" data-testid={`card-skill-${skill.name.toLowerCase().replace(/\s+/g, '-')}`}>
+                    <Card className="p-3 border-border/50 bg-card/50 backdrop-blur-sm hover:border-primary/50 hover:bg-card/70 transition-all duration-200" data-testid={`card-skill-${skill.name.toLowerCase().replace(/\s+/g, '-')}`}>
                       <div className="flex items-center gap-3">
-                        <skill.icon className="h-6 w-6 text-primary" />
-                        <span className="font-mono text-sm">{skill.name}</span>
+                        <skill.icon className="h-5 w-5 text-primary" />
+                        <span className="text-sm font-medium">{skill.name}</span>
                       </div>
                     </Card>
                   </motion.div>

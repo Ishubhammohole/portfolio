@@ -22,7 +22,7 @@ export default function Home() {
         <ContactSection />
       </main>
       <footer className="py-8 px-6 border-t border-border bg-card">
-        <div className="max-w-7xl mx-auto text-center text-sm text-muted-foreground">
+        <div className="max-w-5xl mx-auto text-center text-sm text-muted-foreground">
           <p>© 2025 {profile.fullLegalName}. Built with React, TypeScript, and Tailwind CSS.</p>
         </div>
       </footer>

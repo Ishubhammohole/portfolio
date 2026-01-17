@@ -34,14 +34,13 @@ export function CertificationsSection() {
   };
 
   return (
-    <section id="certifications" className="py-24 px-6 lg:px-8 bg-card relative" ref={ref}>
-      <div className="absolute inset-0 cyber-grid opacity-50" />
-      <div className="max-w-7xl mx-auto relative z-10">
+    <section id="certifications" className="py-24 px-6 lg:px-8 relative" ref={ref}>
+      <div className="max-w-5xl mx-auto relative z-10">
         <motion.h2
           initial={{ opacity: 0, y: 20 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.5 }}
-          className="text-4xl lg:text-5xl font-bold mb-12 text-center"
+          transition={{ duration: 0.6 }}
+          className="text-3xl md:text-4xl lg:text-5xl font-bold mb-16 text-center"
           data-testid="text-certifications-heading"
         >
           Certifications & Awards
@@ -52,7 +51,7 @@ export function CertificationsSection() {
             <Button
               variant="outline"
               size="icon"
-              className="absolute left-0 top-1/2 -translate-y-1/2 z-10 bg-background/80 backdrop-blur-sm"
+              className="absolute left-0 top-1/2 -translate-y-1/2 z-10 bg-background/90 backdrop-blur-sm border-border/50"
               onClick={() => scroll("left")}
               data-testid="button-scroll-left"
             >
@@ -64,7 +63,7 @@ export function CertificationsSection() {
             <Button
               variant="outline"
               size="icon"
-              className="absolute right-0 top-1/2 -translate-y-1/2 z-10 bg-background/80 backdrop-blur-sm"
+              className="absolute right-0 top-1/2 -translate-y-1/2 z-10 bg-background/90 backdrop-blur-sm border-border/50"
               onClick={() => scroll("right")}
               data-testid="button-scroll-right"
             >
@@ -83,10 +82,10 @@ export function CertificationsSection() {
                 key={cert.name}
                 initial={{ opacity: 0, scale: 0.9 }}
                 animate={isInView ? { opacity: 1, scale: 1 } : {}}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
+                transition={{ duration: 0.6, delay: index * 0.1 }}
                 className="flex-none w-80 snap-start"
               >
-                <Card className="p-6 h-full hover-elevate neon-glow border-primary/30" data-testid={`card-cert-${index}`}>
+                <Card className="p-6 h-full border-border/50 bg-card/50 backdrop-blur-sm hover:border-primary/50 hover:bg-card/70 transition-all duration-200" data-testid={`card-cert-${index}`}>
                   <div className="flex items-start gap-3 mb-4">
                     <Award className="h-6 w-6 text-primary flex-shrink-0" />
                     <div className="flex-1">
@@ -108,7 +107,7 @@ export function CertificationsSection() {
                     <Button
                       variant="outline"
                       size="sm"
-                      className="w-full"
+                      className="w-full border-primary/30 hover:bg-primary/10 hover:border-primary/50"
                       data-testid={`button-credential-${index}`}
                       onClick={() => window.open(cert.url, '_blank')}
                     >

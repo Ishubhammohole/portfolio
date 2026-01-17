@@ -10,80 +10,75 @@ export function HeroSection() {
   };
 
   return (
-    <section id="hero" className="min-h-screen flex items-center justify-center px-6 lg:px-8 pt-16 cyber-grid relative overflow-hidden">
+    <section id="hero" className="min-h-screen flex items-center justify-center px-6 lg:px-8 pt-16 relative overflow-hidden">
+      <div className="absolute inset-0 cyber-grid opacity-30" />
       <div className="absolute inset-0 bg-gradient-to-b from-transparent via-background/50 to-background pointer-events-none" />
-      <div className="max-w-6xl w-full relative z-10">
-        <div className="flex flex-col items-center text-center">
+      
+      <div className="max-w-5xl w-full relative z-10">
+        <div className="flex flex-col items-center text-center space-y-8">
           <motion.div
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.5 }}
-            className="mb-8"
+            transition={{ duration: 0.6 }}
+            className="relative"
           >
-            <div className="relative">
-              <div className="absolute inset-0 rounded-full bg-primary/20 blur-3xl animate-pulse" />
-              <div className="absolute -inset-1 rounded-full bg-gradient-to-r from-primary via-primary/50 to-primary opacity-75 blur animate-pulse" />
-              <img
-                src={profileImage}
-                alt={profile.displayName}
-                className="relative w-48 h-48 rounded-full object-cover ring-4 ring-primary neon-glow"
-                data-testid="img-profile"
-              />
+            <div className="absolute inset-0 rounded-full bg-primary/10 blur-2xl" />
+            <img
+              src={profileImage}
+              alt={profile.displayName}
+              className="relative w-40 h-40 rounded-full object-cover ring-2 ring-primary/20"
+              data-testid="img-profile"
+            />
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            className="space-y-6"
+          >
+            <h1
+              className="text-4xl md:text-6xl lg:text-7xl font-bold tracking-tight"
+              data-testid="text-name"
+            >
+              {profile.displayName}
+            </h1>
+
+            <div className="flex flex-wrap justify-center gap-3 max-w-3xl">
+              <span className="px-4 py-2 bg-primary/10 text-primary border border-primary/20 rounded-full text-sm font-medium">
+                Full Stack + GenAI Developer
+              </span>
+              <span className="px-4 py-2 bg-primary/10 text-primary border border-primary/20 rounded-full text-sm font-medium">
+                M.S. in Computer Science @ SUNY Buffalo
+              </span>
+              <span className="px-4 py-2 bg-primary/10 text-primary border border-primary/20 rounded-full text-sm font-medium">
+                2+ YOE @ Infosys | OCI GenAI Certified
+              </span>
             </div>
-          </motion.div>
 
-          <motion.h1
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.2 }}
-            className="text-5xl lg:text-7xl font-bold mb-4 neon-text"
-            data-testid="text-name"
-          >
-            {profile.displayName}
-          </motion.h1>
+            <p
+              className="text-lg md:text-xl text-muted-foreground max-w-2xl leading-relaxed"
+              data-testid="text-tagline"
+            >
+              Building high-impact, scalable solutions across FinTech, AI/ML, and Cloud Infrastructure
+            </p>
+          </motion.div>
 
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.3 }}
-            className="flex flex-wrap justify-center gap-3 mb-6"
-          >
-            <span className="px-4 py-2 bg-primary/10 text-primary border border-primary/30 rounded-full font-mono text-sm neon-glow">
-              Full Stack + GenAI Developer
-            </span>
-            <span className="px-4 py-2 bg-primary/10 text-primary border border-primary/30 rounded-full font-mono text-sm neon-glow">
-              M.S. in Computer Science @ SUNY Buffalo
-            </span>
-            <span className="px-4 py-2 bg-primary/10 text-primary border border-primary/30 rounded-full font-mono text-sm neon-glow">
-              2+ YOE @ Infosys | OCI GenAI Certified
-            </span>
-          </motion.div>
-
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.4 }}
-            className="text-xl lg:text-2xl text-muted-foreground max-w-3xl mb-8"
-            data-testid="text-tagline"
-          >
-            Building high-impact, scalable solutions across FinTech, AI/ML, and Cloud Infrastructure
-          </motion.p>
-
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.5 }}
-            className="flex flex-wrap justify-center gap-4 mb-8"
+            transition={{ duration: 0.6, delay: 0.4 }}
+            className="flex flex-wrap justify-center gap-4"
           >
             <Button
               onClick={scrollToContact}
               data-testid="button-contact"
-              className="bg-primary text-primary-foreground hover:bg-primary/90"
+              className="bg-primary text-primary-foreground hover:bg-primary/90 px-6 py-3"
             >
               <Mail className="mr-2 h-4 w-4" />
               Get In Touch
             </Button>
-            <Button variant="outline" data-testid="button-resume">
+            <Button variant="outline" data-testid="button-resume" className="px-6 py-3">
               <Download className="mr-2 h-4 w-4" />
               Download Resume
             </Button>
@@ -92,7 +87,7 @@ export function HeroSection() {
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            transition={{ duration: 0.5, delay: 0.6 }}
+            transition={{ duration: 0.6, delay: 0.6 }}
             className="flex gap-4"
           >
             {profile.contact.github && (
@@ -101,7 +96,7 @@ export function HeroSection() {
                   variant="ghost"
                   size="icon"
                   data-testid="link-github"
-                  className="rounded-full hover:text-primary hover:border-primary border border-transparent"
+                  className="rounded-full hover:text-primary hover:bg-primary/10"
                 >
                   <Github className="h-5 w-5" />
                 </Button>
@@ -113,7 +108,7 @@ export function HeroSection() {
                   variant="ghost"
                   size="icon"
                   data-testid="link-linkedin"
-                  className="rounded-full hover:text-primary hover:border-primary border border-transparent"
+                  className="rounded-full hover:text-primary hover:bg-primary/10"
                 >
                   <Linkedin className="h-5 w-5" />
                 </Button>
@@ -125,7 +120,7 @@ export function HeroSection() {
                   variant="ghost"
                   size="icon"
                   data-testid="link-email"
-                  className="rounded-full hover:text-primary hover:border-primary border border-transparent"
+                  className="rounded-full hover:text-primary hover:bg-primary/10"
                 >
                   <Mail className="h-5 w-5" />
                 </Button>

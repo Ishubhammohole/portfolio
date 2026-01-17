@@ -189,38 +189,9 @@
 
   .cyber-grid {
     background-image: 
-      linear-gradient(rgba(100, 255, 218, 0.03) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(100, 255, 218, 0.03) 1px, transparent 1px);
-    background-size: 50px 50px;
-  }
-
-  .neon-glow {
-    box-shadow: 
-      0 0 8px rgba(100, 255, 218, 0.25),
-      0 0 16px rgba(100, 255, 218, 0.15),
-      0 0 24px rgba(100, 255, 218, 0.08);
-  }
-
-  .neon-text {
-    text-shadow: 
-      0 0 8px rgba(100, 255, 218, 0.4),
-      0 0 16px rgba(100, 255, 218, 0.25),
-      0 0 24px rgba(100, 255, 218, 0.15);
-  }
-
-  /* Mobile-optimized neon effects */
-  @media (max-width: 768px) {
-    .neon-glow {
-      box-shadow: 
-        0 0 6px rgba(100, 255, 218, 0.2),
-        0 0 12px rgba(100, 255, 218, 0.1);
-    }
-
-    .neon-text {
-      text-shadow: 
-        0 0 6px rgba(100, 255, 218, 0.35),
-        0 0 12px rgba(100, 255, 218, 0.2);
-    }
+      linear-gradient(rgba(16, 185, 129, 0.02) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(16, 185, 129, 0.02) 1px, transparent 1px);
+    background-size: 60px 60px;
   }
 }
 
