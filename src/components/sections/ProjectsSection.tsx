@@ -5,45 +5,24 @@ import { Card } from "../ui/card";
 import { Button } from "../ui/button";
 import { Badge } from "../ui/badge";
 import { Github, ExternalLink } from "lucide-react";
+import { profile } from "../../content/profile";
 import rippleImage from "/images/projects/ripple-policy-simulator.png";
 import llmImage from "/images/projects/text-to-image-system.png";
 import devSyncImage from "/images/projects/devsync-platform.png";
 import microservicesImage from "/images/projects/microservices-platform.png";
+import ratelimiterImage from "/images/projects/microservices-platform.png"; // Reuse existing image
 
-const projects = [
-  {
-    title: "Ripple Policy Simulator",
-    description: "Built a financial policy simulation platform enabling banks to model and analyze transaction scenarios. Implemented real-time data visualization and risk assessment algorithms, processing 10k+ simulations daily.",
-    image: rippleImage,
-    tags: ["React", "Spring Boot", "PostgreSQL", "Docker"],
-    github: "#",
-    demo: "#",
-  },
-  {
-    title: "LLM-Powered Text-to-Image System",
-    description: "Developed an AI system leveraging diffusion models for high-quality image generation from text prompts. Integrated fine-tuned Stable Diffusion models with custom prompt engineering pipeline.",
-    image: llmImage,
-    tags: ["Python", "PyTorch", "Stable Diffusion", "FastAPI"],
-    github: "#",
-    demo: "#",
-  },
-  {
-    title: "DevSync AI",
-    description: "Created an AI-powered development collaboration tool with intelligent code suggestions and automated code review. Integrated GPT-4 for context-aware recommendations and bug detection.",
-    image: devSyncImage,
-    tags: ["TypeScript", "React", "OpenAI API", "Node.js"],
-    github: "#",
-    demo: "#",
-  },
-  {
-    title: "Infosys Microservices Platform",
-    description: "Architected and deployed 12+ microservices handling 5M+ daily transactions for GT Bank. Reduced annual costs by $500k through optimization and achieved 99.9% uptime with Kubernetes orchestration.",
-    image: microservicesImage,
-    tags: ["Java", "Spring Boot", "Kubernetes", "Redis", "MySQL"],
-    github: "#",
-    demo: "#",
-  },
-];
+// Map project titles to images
+const getProjectImage = (title: string) => {
+  const imageMap: { [key: string]: string } = {
+    "Ripple Policy Simulator (UB Hacking 2025)": rippleImage,
+    "LLM-Powered Text-to-Image System": llmImage,
+    "DevSync AI — Autonomous Release Coordinator": devSyncImage,
+    "Distributed Rate Limiter — Production-Grade Service": ratelimiterImage,
+    "Open Source Contribution — DjangoCRM": microservicesImage, // Reuse existing image
+  };
+  return imageMap[title] || microservicesImage; // Default fallback
+};
 
 export function ProjectsSection() {
   const ref = useRef(null);
@@ -64,7 +43,7 @@ export function ProjectsSection() {
         </motion.h2>
 
         <div className="space-y-16">
-          {projects.map((project, index) => (
+          {profile.projects.map((project, index) => (
             <motion.div
               key={project.title}
               initial={{ opacity: 0, y: 40 }}
@@ -78,7 +57,7 @@ export function ProjectsSection() {
                 <div className={`grid md:grid-cols-2 gap-0 ${index % 2 === 1 ? "md:grid-flow-dense" : ""}`}>
                   <div className={`${index % 2 === 1 ? "md:col-start-2" : ""}`}>
                     <img
-                      src={project.image}
+                      src={getProjectImage(project.title)}
                       alt={project.title}
                       className="w-full h-full object-cover"
                       data-testid={`img-project-${project.title.toLowerCase().replace(/\s+/g, '-')}`}
@@ -92,26 +71,34 @@ export function ProjectsSection() {
                       {project.description}
                     </p>
                     <div className="flex flex-wrap gap-2 mb-6">
-                      {project.tags.map((tag) => (
+                      {project.technologies.map((tech) => (
                         <Badge
-                          key={tag}
+                          key={tech}
                           variant="outline"
                           className="bg-primary/5 border-primary/30 text-primary"
-                          data-testid={`badge-tech-${tag.toLowerCase().replace(/\s+/g, '-')}`}
+                          data-testid={`badge-tech-${tech.toLowerCase().replace(/\s+/g, '-')}`}
                         >
-                          {tag}
+                          {tech}
                         </Badge>
                       ))}
                     </div>
                     <div className="flex gap-3">
-                      <Button variant="outline" size="sm" data-testid={`button-github-${project.title.toLowerCase().replace(/\s+/g, '-')}`}>
-                        <Github className="mr-2 h-4 w-4" />
-                        Code
-                      </Button>
-                      <Button variant="outline" size="sm" data-testid={`button-demo-${project.title.toLowerCase().replace(/\s+/g, '-')}`}>
-                        <ExternalLink className="mr-2 h-4 w-4" />
-                        Live Demo
-                      </Button>
+                      {project.githubUrl && (
+                        <a href={project.githubUrl} target="_blank" rel="noopener noreferrer">
+                          <Button variant="outline" size="sm" data-testid={`button-github-${project.title.toLowerCase().replace(/\s+/g, '-')}`}>
+                            <Github className="mr-2 h-4 w-4" />
+                            Code
+                          </Button>
+                        </a>
+                      )}
+                      {project.liveUrl && (
+                        <a href={project.liveUrl} target="_blank" rel="noopener noreferrer">
+                          <Button variant="outline" size="sm" data-testid={`button-demo-${project.title.toLowerCase().replace(/\s+/g, '-')}`}>
+                            <ExternalLink className="mr-2 h-4 w-4" />
+                            Live Demo
+                          </Button>
+                        </a>
+                      )}
                     </div>
                   </div>
                 </div>

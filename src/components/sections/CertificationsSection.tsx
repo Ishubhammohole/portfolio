@@ -5,57 +5,7 @@ import { Card } from "../ui/card";
 import { Button } from "../ui/button";
 import { Badge } from "../ui/badge";
 import { ExternalLink, Award, ChevronLeft, ChevronRight } from "lucide-react";
-
-const certifications = [
-  {
-    title: "Oracle Cloud Infrastructure 2025 Foundations Associate",
-    issuer: "Oracle",
-    date: "Issued Jul 2025",
-    credentialId: "ce89fea4-5ec2-4a5a-85c3-e88c1a78e3c3",
-    skills: ["Cloud Computing", "OCI", "IAM", "Cloud Governance"],
-    credentialUrl: "#"
-  },
-  {
-    title: "Oracle Cloud Infrastructure 2025 AI Foundations Associate",
-    issuer: "Oracle",
-    date: "Issued Jul 2025",
-    credentialId: "4a508fec-a387-448e-bdbb-8e29697263f9",
-    skills: ["AI Fundamentals", "OCI AI Services", "Model Evaluation"],
-    credentialUrl: "#"
-  },
-  {
-    title: "Oracle Cloud Infrastructure 2025 Generative AI Professional",
-    issuer: "Oracle",
-    date: "Issued Jul 2025",
-    credentialId: "451c849f-0554-47fe-aa8c-6a1c71ac14c6",
-    skills: ["RAG Pipelines", "LangChain", "Vector Search", "OCI Gen AI"],
-    credentialUrl: "#"
-  },
-  {
-    title: "Certificate of Appreciation: Speaker (Data Structures Workshop)",
-    issuer: "University at Buffalo",
-    date: "Issued Apr 2025",
-    credentialId: "",
-    skills: ["Public Speaking", "Data Structures", "Teaching"],
-    credentialUrl: "#"
-  },
-  {
-    title: "Certificate of Appreciation: Speaker (MySQL Workshop)",
-    issuer: "University at Buffalo",
-    date: "Issued Mar 2025",
-    credentialId: "",
-    skills: ["Public Speaking", "MySQL", "Database Design"],
-    credentialUrl: "#"
-  },
-  {
-    title: "Certificate of Appreciation: Event Manager (Docker Workshop)",
-    issuer: "University at Buffalo",
-    date: "Issued May 2025",
-    credentialId: "",
-    skills: ["Event Management", "Project Coordination", "Docker"],
-    credentialUrl: "#"
-  }
-];
+import { profile } from "../../content/profile";
 
 export function CertificationsSection() {
   const ref = useRef(null);
@@ -128,9 +78,9 @@ export function CertificationsSection() {
             className="flex gap-6 overflow-x-auto pb-4 snap-x snap-mandatory scrollbar-hide"
             style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
           >
-            {certifications.map((cert, index) => (
+            {profile.certifications.map((cert, index) => (
               <motion.div
-                key={cert.credentialId || cert.title}
+                key={cert.name}
                 initial={{ opacity: 0, scale: 0.9 }}
                 animate={isInView ? { opacity: 1, scale: 1 } : {}}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
@@ -141,10 +91,10 @@ export function CertificationsSection() {
                     <Award className="h-6 w-6 text-primary flex-shrink-0" />
                     <div className="flex-1">
                       <h3 className="font-bold text-lg mb-1 leading-tight" data-testid={`text-cert-title-${index}`}>
-                        {cert.title}
+                        {cert.name}
                       </h3>
                       <p className="text-sm text-primary font-semibold">{cert.issuer}</p>
-                      <p className="text-xs text-muted-foreground">{cert.date}</p>
+                      <p className="text-xs text-muted-foreground">Issued {cert.date}</p>
                     </div>
                   </div>
 
@@ -154,28 +104,18 @@ export function CertificationsSection() {
                     </p>
                   )}
 
-                  <div className="flex flex-wrap gap-2 mb-4">
-                    {cert.skills.map((skill) => (
-                      <Badge
-                        key={skill}
-                        variant="outline"
-                        className="text-xs bg-primary/5 border-primary/30 text-primary"
-                        data-testid={`badge-cert-skill-${skill.toLowerCase().replace(/\s+/g, '-')}`}
-                      >
-                        {skill}
-                      </Badge>
-                    ))}
-                  </div>
-
-                  <Button
-                    variant="outline"
-                    size="sm"
-                    className="w-full"
-                    data-testid={`button-credential-${index}`}
-                  >
-                    <ExternalLink className="mr-2 h-3 w-3" />
-                    View Credential
-                  </Button>
+                  {cert.url && (
+                    <Button
+                      variant="outline"
+                      size="sm"
+                      className="w-full"
+                      data-testid={`button-credential-${index}`}
+                      onClick={() => window.open(cert.url, '_blank')}
+                    >
+                      <ExternalLink className="mr-2 h-3 w-3" />
+                      View Credential
+                    </Button>
+                  )}
                 </Card>
               </motion.div>
             ))}

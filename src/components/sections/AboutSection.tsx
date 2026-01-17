@@ -2,25 +2,14 @@ import { motion } from "framer-motion";
 import { useInView } from "framer-motion";
 import { useRef } from "react";
 import { Badge } from "../ui/badge";
-
-const topSkills = [
-  "JavaScript",
-  "React.js",
-  "Python",
-  "Java",
-  "Spring Boot",
-  "AI/ML",
-  "Docker",
-  "Kubernetes",
-  "AWS",
-  "PostgreSQL",
-  "Framer Motion",
-  "Tailwind CSS"
-];
+import { profile } from "../../content/profile";
 
 export function AboutSection() {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
+
+  // Get all skills from profile and flatten them
+  const allSkills = Object.values(profile.skills).flat().filter(skill => skill.length > 0);
 
   return (
     <section id="about" className="py-24 px-6 lg:px-8 bg-card relative" ref={ref}>
@@ -44,16 +33,7 @@ export function AboutSection() {
             className="space-y-4"
           >
             <p className="text-lg text-foreground leading-relaxed" data-testid="text-about-bio">
-              I'm Shubham Mohole, a Master's student in Computer Science at the University at Buffalo, with 2+ years of professional experience as a Full-Stack Developer at Infosys.
-            </p>
-            <p className="text-lg text-muted-foreground leading-relaxed">
-              At UB, I'm diving deeper into AI/ML, Computer Vision, Security, and Systems — with hands-on work in diffusion models, anomaly detection using autoencoders, and open-source development (contributions to DjangoCRM).
-            </p>
-            <p className="text-lg text-muted-foreground leading-relaxed">
-              At Infosys, I built and deployed over 12 scalable Java/Spring Boot microservices powering 5M+ daily financial transactions. I also led frontend development using Angular and React, collaborated across global Agile teams, and optimized database performance using MySQL and Redis.
-            </p>
-            <p className="text-lg text-muted-foreground leading-relaxed">
-              I've worked extensively with Docker, Kubernetes, Jenkins, and CI/CD pipelines to ensure high-availability production deployments.
+              {profile.about.summary}
             </p>
           </motion.div>
 
@@ -67,7 +47,7 @@ export function AboutSection() {
               Top Skills
             </h3>
             <div className="flex flex-wrap gap-3">
-              {topSkills.map((skill, index) => (
+              {allSkills.length > 0 ? allSkills.slice(0, 12).map((skill, index) => (
                 <motion.div
                   key={skill}
                   initial={{ opacity: 0, scale: 0.8 }}
@@ -82,7 +62,9 @@ export function AboutSection() {
                     {skill}
                   </Badge>
                 </motion.div>
-              ))}
+              )) : (
+                <p className="text-muted-foreground">Please update the skills in profile.ts</p>
+              )}
             </div>
           </motion.div>
         </div>

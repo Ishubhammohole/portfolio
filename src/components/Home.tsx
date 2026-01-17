@@ -6,6 +6,7 @@ import { ProjectsSection } from "./sections/ProjectsSection";
 import { ExperienceSection } from "./sections/ExperienceSection";
 import { CertificationsSection } from "./sections/CertificationsSection";
 import { ContactSection } from "./sections/ContactSection";
+import { profile } from "../content/profile";
 
 export default function Home() {
   return (
@@ -22,7 +23,7 @@ export default function Home() {
       </main>
       <footer className="py-8 px-6 border-t border-border bg-card">
         <div className="max-w-7xl mx-auto text-center text-sm text-muted-foreground">
-          <p>© 2025 Shubham Mohole. Built with React, TypeScript, and Tailwind CSS.</p>
+          <p>© 2025 {profile.fullLegalName}. Built with React, TypeScript, and Tailwind CSS.</p>
         </div>
       </footer>
     </div>

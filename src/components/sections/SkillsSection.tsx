@@ -2,55 +2,56 @@ import { motion } from "framer-motion";
 import { useInView } from "framer-motion";
 import { useRef } from "react";
 import { SiJavascript, SiTypescript, SiReact, SiAngular, SiPython, SiSpring, SiDocker, SiKubernetes, SiJenkins, SiAmazonwebservices, SiMysql, SiPostgresql, SiRedis, SiMongodb, SiTensorflow, SiPytorch, SiOpencv, SiOracle, SiFramer, SiTailwindcss } from "react-icons/si";
-import { Coffee } from "lucide-react";
+import { Coffee, Code, Database, Cloud } from "lucide-react";
 import { Card } from "../ui/card";
+import { profile } from "../../content/profile";
 
-const skillCategories = [
-  {
-    category: "Frontend",
-    skills: [
-      { name: "JavaScript", icon: SiJavascript },
-      { name: "React", icon: SiReact },
-      { name: "Angular", icon: SiAngular },
-      { name: "Framer Motion", icon: SiFramer },
-      { name: "Tailwind CSS", icon: SiTailwindcss },
-    ],
-  },
-  {
-    category: "Backend/DevOps",
-    skills: [
-      { name: "Java", icon: Coffee },
-      { name: "Spring Boot", icon: SiSpring },
-      { name: "Docker", icon: SiDocker },
-      { name: "Kubernetes", icon: SiKubernetes },
-      { name: "Jenkins", icon: SiJenkins },
-    ],
-  },
-  {
-    category: "AI/ML/Cloud",
-    skills: [
-      { name: "Python", icon: SiPython },
-      { name: "TensorFlow", icon: SiTensorflow },
-      { name: "PyTorch", icon: SiPytorch },
-      { name: "OpenCV", icon: SiOpencv },
-      { name: "Oracle OCI", icon: SiOracle },
-      { name: "AWS", icon: SiAmazonwebservices },
-    ],
-  },
-  {
-    category: "Databases",
-    skills: [
-      { name: "MySQL", icon: SiMysql },
-      { name: "PostgreSQL", icon: SiPostgresql },
-      { name: "Redis", icon: SiRedis },
-      { name: "MongoDB", icon: SiMongodb },
-    ],
-  },
-];
+// Default icon mapping for common skills
+const getSkillIcon = (skillName: string) => {
+  const iconMap: { [key: string]: any } = {
+    'javascript': SiJavascript,
+    'typescript': SiTypescript,
+    'react': SiReact,
+    'angular': SiAngular,
+    'python': SiPython,
+    'java': Coffee,
+    'spring': SiSpring,
+    'spring boot': SiSpring,
+    'docker': SiDocker,
+    'kubernetes': SiKubernetes,
+    'jenkins': SiJenkins,
+    'aws': SiAmazonwebservices,
+    'mysql': SiMysql,
+    'postgresql': SiPostgresql,
+    'redis': SiRedis,
+    'mongodb': SiMongodb,
+    'tensorflow': SiTensorflow,
+    'pytorch': SiPytorch,
+    'opencv': SiOpencv,
+    'oracle': SiOracle,
+    'framer motion': SiFramer,
+    'tailwind': SiTailwindcss,
+    'tailwind css': SiTailwindcss,
+  };
+  
+  const key = skillName.toLowerCase();
+  return iconMap[key] || Code; // Default to Code icon
+};
 
 export function SkillsSection() {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
+
+  // Convert profile skills to the format expected by the component
+  const skillCategories = Object.entries(profile.skills)
+    .filter(([_, skills]) => skills.length > 0)
+    .map(([category, skills]) => ({
+      category,
+      skills: skills.map(skill => ({
+        name: skill,
+        icon: getSkillIcon(skill)
+      }))
+    }));
 
   return (
     <section id="skills" className="py-24 px-6 lg:px-8 relative" ref={ref}>
@@ -67,7 +68,7 @@ export function SkillsSection() {
         </motion.h2>
 
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-          {skillCategories.map((category, categoryIndex) => (
+          {skillCategories.length > 0 ? skillCategories.map((category, categoryIndex) => (
             <motion.div
               key={category.category}
               initial={{ opacity: 0, y: 20 }}
@@ -95,7 +96,11 @@ export function SkillsSection() {
                 ))}
               </div>
             </motion.div>
-          ))}
+          )) : (
+            <div className="col-span-full text-center text-muted-foreground">
+              <p>Please update the skills in profile.ts</p>
+            </div>
+          )}
         </div>
       </div>
     </section>

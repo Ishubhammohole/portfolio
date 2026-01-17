@@ -7,6 +7,7 @@ import { Input } from "../ui/input";
 import { Textarea } from "../ui/textarea";
 import { Github, Linkedin, Mail, Send } from "lucide-react";
 import { useToast } from "../../hooks/use-toast";
+import { profile } from "../../content/profile";
 
 export function ContactSection() {
   const ref = useRef(null);
@@ -132,36 +133,42 @@ export function ContactSection() {
                 Or connect with me on
               </p>
               <div className="flex justify-center gap-4">
-                <a href="https://github.com/shubham-mohole" target="_blank" rel="noopener noreferrer">
-                  <Button
-                    variant="outline"
-                    size="icon"
-                    className="rounded-full hover:border-primary hover:text-primary"
-                    data-testid="button-github"
-                  >
-                    <Github className="h-5 w-5" />
-                  </Button>
-                </a>
-                <a href="https://www.linkedin.com/in/shubham-mohole-245a501b2/" target="_blank" rel="noopener noreferrer">
-                  <Button
-                    variant="outline"
-                    size="icon"
-                    className="rounded-full hover:border-primary hover:text-primary"
-                    data-testid="button-linkedin"
-                  >
-                    <Linkedin className="h-5 w-5" />
-                  </Button>
-                </a>
-                <a href="mailto:shubhammohole@example.com">
-                  <Button
-                    variant="outline"
-                    size="icon"
-                    className="rounded-full hover:border-primary hover:text-primary"
-                    data-testid="button-email"
-                  >
-                    <Mail className="h-5 w-5" />
-                  </Button>
-                </a>
+                {profile.contact.github && (
+                  <a href={profile.contact.github} target="_blank" rel="noopener noreferrer">
+                    <Button
+                      variant="outline"
+                      size="icon"
+                      className="rounded-full hover:border-primary hover:text-primary"
+                      data-testid="button-github"
+                    >
+                      <Github className="h-5 w-5" />
+                    </Button>
+                  </a>
+                )}
+                {profile.contact.linkedin && (
+                  <a href={profile.contact.linkedin} target="_blank" rel="noopener noreferrer">
+                    <Button
+                      variant="outline"
+                      size="icon"
+                      className="rounded-full hover:border-primary hover:text-primary"
+                      data-testid="button-linkedin"
+                    >
+                      <Linkedin className="h-5 w-5" />
+                    </Button>
+                  </a>
+                )}
+                {profile.contact.email && (
+                  <a href={`mailto:${profile.contact.email}`}>
+                    <Button
+                      variant="outline"
+                      size="icon"
+                      className="rounded-full hover:border-primary hover:text-primary"
+                      data-testid="button-email"
+                    >
+                      <Mail className="h-5 w-5" />
+                    </Button>
+                  </a>
+                )}
               </div>
             </div>
           </Card>

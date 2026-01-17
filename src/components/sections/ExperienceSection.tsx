@@ -4,68 +4,43 @@ import { useRef } from "react";
 import { Card } from "../ui/card";
 import { Badge } from "../ui/badge";
 import { Briefcase, GraduationCap, DollarSign, Zap, Users, Award } from "lucide-react";
-
-const experiences = [
-  {
-    type: "work",
-    title: "Full Stack Developer",
-    company: "Infosys",
-    location: "Pune, Maharashtra, India",
-    period: "2022 - 2024",
-    achievements: [
-      {
-        text: "Built a multi-functional payment system employing a microservice architecture, yielding usage of 10k bank customers and reducing annual costs by $500k",
-        icon: DollarSign,
-        highlight: "$500k"
-      },
-      {
-        text: "Optimized database performance by introducing MySQL read replicas and database indexes, resulting in a 90% reduction in query response time",
-        icon: Zap,
-        highlight: "90%"
-      },
-      {
-        text: "Led development of instant payment deposit feature with Java, reducing processing time from 3-4 hours to 10-12 minutes",
-        icon: Zap,
-        highlight: "10-12 min"
-      },
-      {
-        text: "Executed stability initiative by configuring liveness and readiness probes across 18 Java microservices",
-        icon: Award,
-        highlight: "18"
-      },
-      {
-        text: "Developed comprehensive unit test cases achieving 98% code coverage using JUnit and Mockito",
-        icon: Award,
-        highlight: "98%"
-      }
-    ],
-    skills: ["Java", "Spring Boot", "Angular", "React", "MySQL", "Redis", "Docker", "Kubernetes", "Jenkins"]
-  },
-  {
-    type: "education",
-    title: "Master's in Computer Science",
-    company: "University at Buffalo",
-    location: "Buffalo, New York, United States",
-    period: "Aug 2024 - Present",
-    achievements: [
-      {
-        text: "Relevant Coursework: Algorithms, Computer Security, Machine Learning, Deep Learning, Computer Vision, Operating Systems",
-        icon: GraduationCap,
-        highlight: ""
-      },
-      {
-        text: "Working on diffusion models, anomaly detection using autoencoders, and contributing to open-source (DjangoCRM)",
-        icon: Users,
-        highlight: ""
-      }
-    ],
-    skills: ["Python", "TensorFlow", "PyTorch", "OpenCV", "AI/ML", "Computer Vision"]
-  }
-];
+import { profile } from "../../content/profile";
 
 export function ExperienceSection() {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
+
+  // Combine experience and education from profile
+  const allExperiences = [
+    ...profile.experience.map(exp => ({
+      type: "work" as const,
+      title: exp.title,
+      company: exp.company,
+      location: exp.location,
+      period: exp.duration,
+      achievements: exp.bullets.map(bullet => ({
+        text: bullet,
+        icon: Briefcase,
+        highlight: ""
+      })),
+      skills: [] // Skills are handled separately in skills section
+    })),
+    ...profile.education.map(edu => ({
+      type: "education" as const,
+      title: edu.degree,
+      company: edu.institution,
+      location: edu.location,
+      period: edu.duration,
+      achievements: [
+        {
+          text: `GPA: ${edu.gpa}`,
+          icon: GraduationCap,
+          highlight: edu.gpa
+        }
+      ],
+      skills: []
+    }))
+  ];
 
   return (
     <section id="experience" className="py-24 px-6 lg:px-8 relative" ref={ref}>
@@ -85,7 +60,7 @@ export function ExperienceSection() {
           <div className="absolute left-8 top-0 bottom-0 w-0.5 bg-primary/20" />
 
           <div className="space-y-12">
-            {experiences.map((exp, index) => (
+            {allExperiences.map((exp, index) => (
               <motion.div
                 key={`${exp.company}-${index}`}
                 initial={{ opacity: 0, x: -20 }}

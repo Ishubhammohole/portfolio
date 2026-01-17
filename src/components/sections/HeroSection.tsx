@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import { Github, Linkedin, Mail, Download } from "lucide-react";
 import { Button } from "../ui/button";
+import { profile } from "../../content/profile";
 import profileImage from "/images/profile.jpg";
 
 export function HeroSection() {
@@ -24,7 +25,7 @@ export function HeroSection() {
               <div className="absolute -inset-1 rounded-full bg-gradient-to-r from-primary via-primary/50 to-primary opacity-75 blur animate-pulse" />
               <img
                 src={profileImage}
-                alt="Shubham Mohole"
+                alt={profile.displayName}
                 className="relative w-48 h-48 rounded-full object-cover ring-4 ring-primary neon-glow"
                 data-testid="img-profile"
               />
@@ -38,7 +39,7 @@ export function HeroSection() {
             className="text-5xl lg:text-7xl font-bold mb-4 neon-text"
             data-testid="text-name"
           >
-            Shubham Mahesh Mohale
+            {profile.displayName}
           </motion.h1>
 
           <motion.div
@@ -48,13 +49,13 @@ export function HeroSection() {
             className="flex flex-wrap justify-center gap-3 mb-6"
           >
             <span className="px-4 py-2 bg-primary/10 text-primary border border-primary/30 rounded-full font-mono text-sm neon-glow">
-              Full-Stack Developer
+              Full Stack + GenAI Developer
             </span>
             <span className="px-4 py-2 bg-primary/10 text-primary border border-primary/30 rounded-full font-mono text-sm neon-glow">
-              Master's in CS (UB)
+              M.S. in Computer Science @ SUNY Buffalo
             </span>
             <span className="px-4 py-2 bg-primary/10 text-primary border border-primary/30 rounded-full font-mono text-sm neon-glow">
-              AI & Cloud Specialist
+              2+ YOE @ Infosys | OCI GenAI Certified
             </span>
           </motion.div>
 
@@ -94,36 +95,42 @@ export function HeroSection() {
             transition={{ duration: 0.5, delay: 0.6 }}
             className="flex gap-4"
           >
-            <a href="https://github.com/shubham-mohole" target="_blank" rel="noopener noreferrer">
-              <Button
-                variant="ghost"
-                size="icon"
-                data-testid="link-github"
-                className="rounded-full hover:text-primary hover:border-primary border border-transparent"
-              >
-                <Github className="h-5 w-5" />
-              </Button>
-            </a>
-            <a href="https://www.linkedin.com/in/shubham-mohole-245a501b2/" target="_blank" rel="noopener noreferrer">
-              <Button
-                variant="ghost"
-                size="icon"
-                data-testid="link-linkedin"
-                className="rounded-full hover:text-primary hover:border-primary border border-transparent"
-              >
-                <Linkedin className="h-5 w-5" />
-              </Button>
-            </a>
-            <a href="mailto:shubhammohole@example.com">
-              <Button
-                variant="ghost"
-                size="icon"
-                data-testid="link-email"
-                className="rounded-full hover:text-primary hover:border-primary border border-transparent"
-              >
-                <Mail className="h-5 w-5" />
-              </Button>
-            </a>
+            {profile.contact.github && (
+              <a href={profile.contact.github} target="_blank" rel="noopener noreferrer">
+                <Button
+                  variant="ghost"
+                  size="icon"
+                  data-testid="link-github"
+                  className="rounded-full hover:text-primary hover:border-primary border border-transparent"
+                >
+                  <Github className="h-5 w-5" />
+                </Button>
+              </a>
+            )}
+            {profile.contact.linkedin && (
+              <a href={profile.contact.linkedin} target="_blank" rel="noopener noreferrer">
+                <Button
+                  variant="ghost"
+                  size="icon"
+                  data-testid="link-linkedin"
+                  className="rounded-full hover:text-primary hover:border-primary border border-transparent"
+                >
+                  <Linkedin className="h-5 w-5" />
+                </Button>
+              </a>
+            )}
+            {profile.contact.email && (
+              <a href={`mailto:${profile.contact.email}`}>
+                <Button
+                  variant="ghost"
+                  size="icon"
+                  data-testid="link-email"
+                  className="rounded-full hover:text-primary hover:border-primary border border-transparent"
+                >
+                  <Mail className="h-5 w-5" />
+                </Button>
+              </a>
+            )}
           </motion.div>
         </div>
       </div>
