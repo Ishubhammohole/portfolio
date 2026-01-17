@@ -30,11 +30,24 @@ export function AboutSection() {
             initial={{ opacity: 0, x: -20 }}
             animate={isInView ? { opacity: 1, x: 0 } : {}}
             transition={{ duration: 0.5, delay: 0.2 }}
-            className="space-y-4"
+            className="space-y-6"
           >
             <p className="text-lg text-foreground leading-relaxed" data-testid="text-about-bio">
               {profile.about.summary}
             </p>
+            
+            <div className="space-y-4">
+              {profile.about.bullets.map((bullet, index) => (
+                <div key={index} className="flex items-start gap-3">
+                  <div className="w-2 h-2 rounded-full bg-primary mt-2 flex-shrink-0" />
+                  <p className="text-muted-foreground leading-relaxed">{bullet}</p>
+                </div>
+              ))}
+            </div>
+
+            <div className="pt-4 border-t border-border">
+              <p className="text-primary font-medium">{profile.about.lookingFor}</p>
+            </div>
           </motion.div>
 
           <motion.div

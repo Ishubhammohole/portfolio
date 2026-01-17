@@ -180,11 +180,14 @@ export const profile = {
 
   // About
   about: {
-    summary: `I'm a Master's student in Computer Science at the University at Buffalo with 2+ years of professional experience as a Full-Stack Developer at Infosys. Currently working as a Research Assistant in Robotics & AI, focusing on quadruped robot navigation and sim-to-real transfer learning.
-
-At Infosys, I built and optimized Java/Spring Boot microservices supporting automated loan approval workflows, handling 5M+ daily transactions. I integrated external credit APIs, reducing approval time from 14 days to under 1 hour, and achieved 90% performance gains through MySQL + Redis optimization.
-
-My current research involves analyzing navigation failures in quadruped robots, building data processing pipelines, and designing robustness evaluations for learned policies across simulated and real-world deployments.`,
+    summary: "MS Computer Science student at University at Buffalo with 2+ years as Full-Stack Developer at Infosys. Experienced in building scalable microservices, AI/ML systems, and cloud infrastructure.",
+    bullets: [
+      "At UB: Exploring AI/ML, Computer Vision, Security, and Systems with hands-on work in diffusion models and anomaly detection using autoencoders",
+      "At Infosys: Built and deployed 12+ Java/Spring Boot microservices powering 5M+ daily financial transactions with Angular/React frontends",
+      "Infrastructure: Optimized MySQL/Redis performance and deployed high-availability systems using Docker, Kubernetes, Jenkins, and CI/CD",
+      "Open Source: Active contributor to projects like DjangoCRM, focusing on system improvements and maintainability"
+    ],
+    lookingFor: "Open to full-time roles and internships in backend development, cloud engineering, or AI systems."
   },
 };
 
