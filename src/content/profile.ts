@@ -71,48 +71,77 @@ export const profile = {
   ],
 
   // Projects
-  projects: [
-    {
-      title: "Distributed Rate Limiter — Production-Grade Service",
-      duration: "Jan 2026",
-      description: "Redis + Lua for atomic enforcement across instances. Algorithms: token bucket, fixed window, sliding window log, sliding window counter (Strategy pattern). Observability: Prometheus metrics + structured logging. Resilience: fail-open behavior for safe degradation.",
-      technologies: ["Redis", "Lua", "Prometheus", "Docker"],
-      githubUrl: "",
-      liveUrl: "",
-    },
-    {
-      title: "DevSync AI — Autonomous Release Coordinator",
-      duration: "Aug – Sep 2025",
-      description: "Integrates GitHub + JIRA + Slack. Automates sprint updates, release notes, changelog generation. Deployed with Docker + CI/CD.",
-      technologies: ["TypeScript", "GitHub API", "JIRA API", "Slack API", "Docker"],
-      githubUrl: "https://github.com/DevSync-AI/kiro-devsync-ai",
-      liveUrl: "",
-    },
-    {
-      title: "LLM-Powered Text-to-Image System",
-      duration: "Jan 2025 – Apr 2025",
-      description: "Built Stable Diffusion pipeline + LoRA fine-tuning; improved output quality by ~25%. Human-in-the-loop prompt iteration and evaluation workflow.",
-      technologies: ["Python", "PyTorch", "Stable Diffusion", "LoRA"],
-      githubUrl: "https://github.com/Ishubhammohole/Text-to-Image-Generation",
-      liveUrl: "",
-    },
-    {
-      title: "Open Source Contribution — DjangoCRM",
-      duration: "May – Jun 2025",
-      description: "Refactored email constants into admin-managed singleton settings with permission checks.",
-      technologies: ["Python", "Django"],
-      githubUrl: "https://github.com/DjangoCRM/django-crm/pull/229",
-      liveUrl: "",
-    },
-    {
-      title: "Ripple Policy Simulator (UB Hacking 2025)",
-      duration: "Oct 2025",
-      description: "Monte Carlo simulation for policy tradeoffs. Adjustable policy levers + real-time Monte Carlo simulations with confidence intervals. AI-powered insights (Gemini) for equity/sustainability analysis.",
-      technologies: ["React", "Monte Carlo", "Gemini AI"],
-      githubUrl: "https://lnkd.in/dskJ7AQf",
-      liveUrl: "https://lnkd.in/dXeWAJQM",
-    },
-  ],
+  projects: {
+    featured: [
+      {
+        title: "Distributed Rate Limiter — Production-Grade Service",
+        timeframe: "Jan 2026",
+        summary: "Production-ready distributed rate limiting service with multiple algorithm support",
+        highlights: [
+          "Built Redis + Lua for atomic enforcement across instances",
+          "Implemented token bucket, fixed window, sliding window log, sliding window counter using Strategy pattern",
+          "Added Prometheus metrics + structured logging with fail-open behavior for safe degradation"
+        ],
+        technologies: ["Redis", "Lua", "Prometheus", "Docker"],
+        githubUrl: "",
+        liveUrl: "",
+      },
+      {
+        title: "DevSync AI — Autonomous Release Coordinator",
+        timeframe: "Aug – Sep 2025",
+        summary: "AI-powered development workflow automation integrating GitHub, JIRA, and Slack",
+        highlights: [
+          "Integrates GitHub + JIRA + Slack APIs for seamless workflow automation",
+          "Automates sprint updates, release notes, and changelog generation",
+          "Deployed with Docker + CI/CD for reliable production deployment"
+        ],
+        technologies: ["TypeScript", "GitHub API", "JIRA API", "Slack API", "Docker"],
+        githubUrl: "https://github.com/DevSync-AI/kiro-devsync-ai",
+        liveUrl: "",
+      },
+      {
+        title: "LLM-Powered Text-to-Image System",
+        timeframe: "Jan – Apr 2025",
+        summary: "Advanced AI image generation system with fine-tuned Stable Diffusion models",
+        highlights: [
+          "Built Stable Diffusion pipeline + LoRA fine-tuning infrastructure",
+          "Improved output quality by ~25% through custom training techniques",
+          "Implemented human-in-the-loop prompt iteration and evaluation workflow"
+        ],
+        technologies: ["Python", "PyTorch", "Stable Diffusion", "LoRA"],
+        githubUrl: "https://github.com/Ishubhammohole/Text-to-Image-Generation",
+        liveUrl: "",
+      },
+      {
+        title: "Ripple Policy Simulator (UB Hacking 2025)",
+        timeframe: "Oct 2025",
+        summary: "Monte Carlo simulation platform for analyzing policy tradeoffs and impacts",
+        highlights: [
+          "Built adjustable policy levers with real-time Monte Carlo simulations",
+          "Implemented confidence intervals for statistical accuracy",
+          "Integrated AI-powered insights (Gemini) for equity/sustainability analysis"
+        ],
+        technologies: ["React", "Monte Carlo", "Gemini AI"],
+        githubUrl: "https://lnkd.in/dskJ7AQf",
+        liveUrl: "https://lnkd.in/dXeWAJQM",
+      },
+    ],
+    openSource: [
+      {
+        title: "Open Source — DjangoCRM",
+        timeframe: "May – Jun 2025",
+        summary: "Enhanced email configuration management for Django CRM system",
+        highlights: [
+          "Refactored email constants into admin-managed singleton settings",
+          "Added permission checks for secure configuration management",
+          "Improved system maintainability and administrative control"
+        ],
+        technologies: ["Python", "Django"],
+        githubUrl: "https://github.com/DjangoCRM/django-crm/pull/229",
+        liveUrl: "",
+      },
+    ],
+  },
 
   // Skills
   skills: {
