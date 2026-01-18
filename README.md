@@ -86,9 +86,11 @@ The portfolio features a modern "cyber architect" aesthetic with:
 
 ## Deployment
 
-This portfolio is deployed on Cloudflare Pages at [shubhammohole.io](https://shubhammohole.io).
+This portfolio is deployed on Cloudflare Pages at [shubhammohole.pages.dev](https://shubhammohole.pages.dev) - completely free!
 
 For detailed deployment instructions, see [docs/deploy-cloudflare.md](docs/deploy-cloudflare.md).
+
+**No domain purchase required** - uses the free `.pages.dev` subdomain.
 
 ## License
 

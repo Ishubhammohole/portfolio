@@ -1,7 +1,11 @@
 # Cloudflare Pages Deployment Guide
 
 ## Overview
-This portfolio is deployed to Cloudflare Pages with custom domain `shubhammohole.io`.
+This portfolio is deployed to Cloudflare Pages using the **free `.pages.dev` domain**.
+
+**Your portfolio will be accessible at: `https://shubhammohole.pages.dev`**
+
+No domain purchase required - completely free deployment!
 
 ## Cloudflare Pages Settings
 
@@ -15,179 +19,48 @@ This portfolio is deployed to Cloudflare Pages with custom domain `shubhammohole
 ### Environment Variables
 None required for this static site.
 
-## GitHub Integration
+## Deployment Steps
 
-1. Connect GitHub repository to Cloudflare Pages
-2. Select the main branch for automatic deployments
-3. Cloudflare will automatically deploy on every push to main
+### Step 1: Create Cloudflare Account
+1. Go to [Cloudflare Pages](https://pages.cloudflare.com/)
+2. **Sign up** for a free Cloudflare account (if you don't have one)
+3. **Verify your email** address
 
-## Understanding NXDOMAIN Error
+### Step 2: Connect GitHub Repository
+1. Click **Create a project**
+2. Select **Connect to Git**
+3. **Authorize Cloudflare** to access your GitHub account
+4. **Select your portfolio repository** from the list
+5. Click **Begin setup**
 
-**What NXDOMAIN means:**
-`DNS_PROBE_FINISHED_NXDOMAIN` means:
-- DNS record is missing for the domain/subdomain
-- Domain isn't properly delegated to DNS servers
-- Nameservers aren't configured correctly
+### Step 3: Configure Build Settings
+1. **Project name**: Enter `shubhammohole` (this becomes your subdomain)
+2. **Production branch**: `main`
+3. **Framework preset**: Select **Vite**
+4. **Build command**: `npm run build`
+5. **Build output directory**: `dist`
+6. **Root directory**: Leave empty (uses repository root)
+7. Click **Save and Deploy**
 
-**NXDOMAIN does NOT mean the domain is unregistered.**
+### Step 4: Wait for Deployment
+1. **Cloudflare will build and deploy** your site automatically
+2. **First deployment takes 2-5 minutes**
+3. **You'll see build logs** in real-time
+4. **Success message** will show your live URL
 
-## Check Domain Ownership
+### Step 5: Access Your Live Portfolio
+Your portfolio will be available at:
+**`https://shubhammohole.pages.dev`**
 
-Before fixing DNS, verify you own the domain:
+## Automatic Deployments
 
-### Step 1: Confirm Domain Registration
-1. **Log into your domain registrar dashboard** (Namecheap, GoDaddy, Google Domains, etc.)
-2. **Check "My Domains" section**
-3. **Verify `shubhammohole.io` appears in your domain list**
-4. **Confirm domain status**:
-   - Not expired
-   - Not suspended
-   - Shows active/registered status
-5. **Note current nameservers** (you'll need this info)
+- **Every push to `main` branch** triggers automatic deployment
+- **No manual deployment needed** after initial setup
+- **Build logs available** in Cloudflare Pages dashboard
+- **Rollback available** if needed
 
-**This is the source of truth for domain ownership - not whois or DNS lookups.**
+## SPA Routing (Already Configured)
 
-## Custom Domain Setup - Two Options
-
-### Option A: Move DNS to Cloudflare (RECOMMENDED)
-
-This method changes your domain's nameservers to Cloudflare.
-
-#### Step 1: Add Domain to Cloudflare
-1. Go to **Cloudflare Dashboard** → **Add a Site**
-2. Enter `shubhammohole.io`
-3. Choose **Free** plan
-4. Click **Continue**
-5. Cloudflare will scan existing DNS records
-6. Review and **Continue**
-
-#### Step 2: Update Nameservers at Registrar
-1. **Cloudflare will show 2 nameservers** (e.g., `ns1.cloudflare.com`, `ns2.cloudflare.com`)
-2. **Copy these nameservers exactly**
-3. **Go to your domain registrar dashboard**
-4. **Find your domain** → **Manage** → **Nameservers** or **DNS**
-5. **Change from default to "Custom Nameservers"**
-6. **Replace existing nameservers** with Cloudflare's nameservers
-7. **Save changes**
-
-#### Step 3: Wait for Nameserver Delegation
-1. **Return to Cloudflare Dashboard**
-2. **Wait for status to change** from "Pending" to **"Active"**
-3. **This can take 5 minutes to 24 hours**
-4. **Until delegation completes, NXDOMAIN will remain**
-
-#### Step 4: Add Custom Domains in Cloudflare Pages
-1. Go to **Cloudflare Pages** → **Your Project** → **Custom domains**
-2. Click **Set up a custom domain**
-3. Enter `shubhammohole.io` → **Continue**
-4. Click **Set up a custom domain** again
-5. Enter `www.shubhammohole.io` → **Continue**
-
-#### Step 5: Verify DNS Records
-1. Go to **Cloudflare Dashboard** → **DNS** → **Records**
-2. **Cloudflare Pages will automatically create required records**
-3. You should see records like:
-   - `CNAME www <your-project>.pages.dev` (Proxied)
-   - Apex domain record (automatically handled)
-
-### Option B: Keep DNS at Registrar
-
-This method keeps your current nameservers and adds DNS records manually.
-
-#### Step 1: Add Custom Domains in Cloudflare Pages
-1. Go to **Cloudflare Pages** → **Your Project** → **Custom domains**
-2. Click **Set up a custom domain**
-3. Enter `shubhammohole.io` → **Continue**
-4. **Cloudflare will show exact DNS records needed**
-5. **Copy these records exactly**
-
-#### Step 2: Add DNS Records at Registrar
-1. **Go to your registrar's DNS management panel**
-2. **Add the exact records Cloudflare Pages showed**:
-   - Usually: `A @ <IP-address>` for apex domain
-   - Usually: `CNAME www <your-project>.pages.dev` for www
-3. **Save DNS changes**
-4. **Repeat for www.shubhammohole.io**
-
-#### Step 3: Wait for DNS Propagation
-- **DNS changes take 5 minutes to 48 hours to propagate**
-- **NXDOMAIN will persist until propagation completes**
-
-## WWW Record Requirement
-
-**NXDOMAIN on `www.shubhammohole.io` means no www record exists.**
-
-### Required WWW Record
-Add one of these at your DNS provider:
-- `CNAME www <your-project>.pages.dev`
-- Or whatever Cloudflare Pages specifically instructs
-
-### WWW to Apex Redirect (301)
-
-#### Method 1: Automatic (Preferred)
-When adding custom domains, Cloudflare Pages may offer **"Redirect www to apex domain"** - enable this.
-
-#### Method 2: Manual Redirect Rule
-1. Go to **Cloudflare Dashboard** → **Rules** → **Redirect Rules**
-2. Click **Create rule**
-3. **Rule name**: "WWW to Apex Redirect"
-4. **When incoming requests match**:
-   - Field: `Hostname`
-   - Operator: `equals`
-   - Value: `www.shubhammohole.io`
-5. **Then**:
-   - Type: `Dynamic`
-   - Expression: `concat("https://shubhammohole.io", http.request.uri.path)`
-   - Status code: `301`
-6. **Save**
-
-## Troubleshooting DNS
-
-### Test DNS Resolution
-Use these commands to check DNS status:
-
-```bash
-# Check apex domain
-dig shubhammohole.io A
-
-# Check www subdomain
-dig www.shubhammohole.io CNAME
-
-# Alternative lookup
-nslookup shubhammohole.io
-```
-
-### Expected "Good" Results
-**Working DNS should show:**
-```
-;; ANSWER SECTION:
-shubhammohole.io.    300    IN    A    104.21.x.x
-```
-
-**NXDOMAIN means:**
-```
-;; ->>HEADER<<- opcode: QUERY, status: NXDOMAIN
-```
-
-### Common Issues and Fixes
-
-#### Still Getting NXDOMAIN
-1. **Check nameserver delegation**: Verify registrar is using correct nameservers
-2. **Wait longer**: DNS propagation can take up to 48 hours
-3. **Clear DNS cache**: `sudo dscacheutil -flushcache` (macOS)
-4. **Test from different location**: Use online DNS checkers
-
-#### Domain Shows "Pending" in Cloudflare
-- **Nameservers not updated yet** at registrar
-- **Propagation still in progress**
-- **Double-check nameservers match exactly**
-
-#### Wrong DNS Records
-- **Cloudflare Pages will show exact records needed**
-- **Copy them exactly as shown**
-- **Don't guess - use Cloudflare's instructions**
-
-## SPA Routing
 The `public/_redirects` file ensures client-side routing works:
 ```
 /* /index.html 200
@@ -195,19 +68,76 @@ The `public/_redirects` file ensures client-side routing works:
 
 This prevents 404 errors when refreshing routes like `/about` or `/projects`.
 
+## Resume Download (Already Configured)
+
+- **Resume file**: `public/shubham_mohole_resume.pdf`
+- **Download URL**: `https://shubhammohole.pages.dev/shubham_mohole_resume.pdf`
+- **Button works automatically** - no additional setup needed
+
 ## Verification Checklist
 
-After DNS propagation completes:
+After deployment completes, verify:
 
-- [ ] `https://shubhammohole.io` loads the portfolio
-- [ ] `https://www.shubhammohole.io` redirects to apex domain (301)
-- [ ] `https://shubhammohole.io/shubham_mohole_resume.pdf` downloads the resume
-- [ ] Refreshing any route (e.g., direct to `/about`) doesn't show 404
+- [ ] `https://shubhammohole.pages.dev` loads the portfolio
+- [ ] `https://shubhammohole.pages.dev/shubham_mohole_resume.pdf` downloads the resume
+- [ ] Refreshing any route (e.g., `/about`) doesn't show 404
 - [ ] All sections scroll properly from navigation
 - [ ] Contact form opens email client
 - [ ] All certification links work (Oracle + McKinsey)
 
-## Performance
-- Cloudflare automatically provides CDN caching
-- Static assets are cached globally
-- No additional configuration needed for optimal performance
+## Troubleshooting
+
+### Build Failures
+1. **Check build logs** in Cloudflare Pages dashboard
+2. **Verify `npm run build` works locally**
+3. **Ensure Node.js 20** is specified in `.nvmrc`
+4. **Check for missing dependencies** in `package.json`
+
+### 404 Errors on Routes
+- **`_redirects` file should be in `public/` directory** ✓
+- **File gets copied to `dist/` during build** ✓
+- **If still 404**: Check Functions tab in Cloudflare Pages
+
+### Resume Download Issues
+- **File should be at `public/shubham_mohole_resume.pdf`** ✓
+- **Gets copied to `dist/` during build** ✓
+- **Accessible at `/shubham_mohole_resume.pdf`** ✓
+
+### Deployment Not Triggering
+1. **Check GitHub integration** in Cloudflare Pages
+2. **Verify branch is `main`**
+3. **Manual deployment**: Click "Create deployment" in dashboard
+
+## Performance & Features
+
+### Included Free Features
+- **Global CDN** - Fast loading worldwide
+- **HTTPS certificate** - Automatic SSL
+- **Unlimited bandwidth** - No traffic limits
+- **Automatic deployments** - Push to deploy
+- **Build logs** - Debug deployment issues
+- **Rollback capability** - Revert if needed
+
+### No Setup Required
+- ✅ **SPA routing** - Already configured
+- ✅ **Resume downloads** - Already working
+- ✅ **Build optimization** - Vite handles it
+- ✅ **Asset caching** - Cloudflare handles it
+
+## Adding Custom Domain Later (Optional)
+
+If you decide to purchase a custom domain later:
+
+1. **Buy domain** from any registrar (Namecheap, GoDaddy, etc.)
+2. **Cloudflare Pages** → **Custom domains** → **Set up a custom domain**
+3. **Follow DNS setup instructions** (will be provided by Cloudflare)
+4. **Your `.pages.dev` URL will still work** alongside custom domain
+
+**For now, the free `.pages.dev` domain is perfect for showcasing your portfolio!**
+
+## Next Steps After Deployment
+
+1. **Share your portfolio**: `https://shubhammohole.pages.dev`
+2. **Update resume/projects** by pushing to GitHub
+3. **Monitor analytics** in Cloudflare Pages dashboard
+4. **Consider custom domain** when ready (optional)
