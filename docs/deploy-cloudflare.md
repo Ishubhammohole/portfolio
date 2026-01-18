@@ -29,32 +29,44 @@ None required for this static site.
    - `shubhammohole.io` (apex domain)
    - `www.shubhammohole.io` (www subdomain)
 
-### Step 2: DNS Configuration
-Cloudflare will provide DNS records. Configure these in Cloudflare DNS:
+### Step 2: Domain Registrar Setup (CRITICAL - Do this FIRST)
+**The DNS_PROBE_FINISHED_NXDOMAIN error means the domain isn't properly configured.**
+
+You need to either:
+
+**Option A: Use Cloudflare Nameservers (Recommended)**
+1. **Add site to Cloudflare:**
+   - Go to Cloudflare Dashboard → Add a Site
+   - Enter `shubhammohole.io`
+   - Choose Free plan
+   - Cloudflare will scan existing DNS records
+
+2. **Update Nameservers at your registrar:**
+   - Cloudflare will provide 2 nameservers (e.g., `ns1.cloudflare.com`, `ns2.cloudflare.com`)
+   - Go to your domain registrar (where you bought shubhammohole.io)
+   - Find DNS/Nameserver settings
+   - Replace existing nameservers with Cloudflare's nameservers
+   - **Wait 24-48 hours for DNS propagation**
+
+**Option B: Keep existing nameservers and add DNS records**
+If you prefer to keep your current nameservers, add these records at your registrar:
+- `A` record: `@` → `<Cloudflare Pages IP>` (provided by Cloudflare)
+- `CNAME` record: `www` → `<your-pages-project>.pages.dev`
+
+### Step 3: DNS Configuration (After nameservers are updated)
+Once nameservers are propagated, configure in Cloudflare DNS:
 
 **For Apex Domain (shubhammohole.io):**
-- Type: `CNAME` or `A` (as instructed by Cloudflare)
-- Name: `@` or `shubhammohole.io`
+- Type: `CNAME`
+- Name: `@`
 - Target: `<your-pages-project>.pages.dev`
+- Proxy status: Proxied (orange cloud)
 
 **For WWW Subdomain (www.shubhammohole.io):**
 - Type: `CNAME`
 - Name: `www`
 - Target: `<your-pages-project>.pages.dev`
-
-### Step 3: Domain Registrar Setup
-If using external registrar (not Cloudflare Registrar):
-
-1. **Add site to Cloudflare:**
-   - Go to Cloudflare Dashboard → Add a Site
-   - Enter `shubhammohole.io`
-   - Choose Free plan
-
-2. **Update Nameservers:**
-   - Cloudflare will provide 2 nameservers (e.g., `ns1.cloudflare.com`, `ns2.cloudflare.com`)
-   - Go to your domain registrar (Namecheap/GoDaddy/etc.)
-   - Update nameservers to Cloudflare's provided nameservers
-   - Wait 24-48 hours for DNS propagation
+- Proxy status: Proxied (orange cloud)
 
 ### Step 4: WWW Redirect Rule
 Create a redirect rule in Cloudflare:
@@ -76,7 +88,6 @@ After deployment, verify:
 
 - [ ] `https://shubhammohole.io` loads the portfolio
 - [ ] `https://www.shubhammohole.io` redirects to apex domain
-- [ ] `https://shubhammohole.io/resume.pdf` downloads the resume
 - [ ] `https://shubhammohole.io/shubham_mohole_resume.pdf` downloads the resume
 - [ ] Refreshing any route (e.g., `/about`) doesn't show 404
 - [ ] All sections scroll properly from navigation
@@ -84,6 +95,14 @@ After deployment, verify:
 - [ ] All certification links work (Oracle + McKinsey)
 
 ## Troubleshooting
+
+### DNS_PROBE_FINISHED_NXDOMAIN Error
+This error means the domain doesn't exist in DNS. To fix:
+
+1. **Check nameservers**: Verify your domain registrar is using Cloudflare nameservers
+2. **Wait for propagation**: DNS changes can take 24-48 hours
+3. **Test DNS**: Use `dig shubhammohole.io` or online DNS checkers
+4. **Verify domain status**: Ensure domain isn't expired at registrar
 
 ### Build Failures
 - Ensure Node.js 20 is used (check `.nvmrc`)
@@ -94,6 +113,7 @@ After deployment, verify:
 - Use `dig shubhammohole.io` to check DNS propagation
 - Verify nameservers are correctly set at registrar
 - Allow 24-48 hours for full propagation
+- Check domain isn't expired or suspended
 
 ### 404 Errors on Routes
 - Ensure `_redirects` file is in `public/` directory
