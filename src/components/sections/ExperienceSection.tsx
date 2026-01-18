@@ -22,7 +22,7 @@ export function ExperienceSection() {
       icon: Briefcase,
       highlight: ""
     })),
-    skills: [] // Skills are handled separately in skills section
+    skills: [] as string[] // Explicitly type as string array
   }));
 
   return (
@@ -85,18 +85,20 @@ export function ExperienceSection() {
                     ))}
                   </ul>
 
-                  <div className="flex flex-wrap gap-2">
-                    {exp.skills.map((skill) => (
-                      <Badge
-                        key={skill}
-                        variant="outline"
-                        className="text-xs bg-muted/50"
-                        data-testid={`badge-skill-${skill.toLowerCase().replace(/\//g, '-')}`}
-                      >
-                        {skill}
-                      </Badge>
-                    ))}
-                  </div>
+                  {exp.skills.length > 0 && (
+                    <div className="flex flex-wrap gap-2">
+                      {exp.skills.map((skill) => (
+                        <Badge
+                          key={skill}
+                          variant="outline"
+                          className="text-xs bg-muted/50"
+                          data-testid={`badge-skill-${skill.toLowerCase().replace(/\//g, '-')}`}
+                        >
+                          {skill}
+                        </Badge>
+                      ))}
+                    </div>
+                  )}
                 </Card>
               </motion.div>
             ))}
