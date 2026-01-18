@@ -36,10 +36,10 @@ Before deploying or releasing updates to the portfolio, verify these items:
 
 ## Post-Deployment Verification
 
-After deploying to Cloudflare Pages:
+After deploying to Cloudflare Pages (use your actual assigned URL):
 
-- [ ] **Site loads**: `https://shubhammohole.pages.dev` accessible
-- [ ] **Resume download**: PDF downloads correctly from live site
+- [ ] **Site loads**: Your assigned `.pages.dev` URL is accessible
+- [ ] **Resume download**: PDF downloads correctly from `<YOUR_URL>/shubham_mohole_resume.pdf`
 - [ ] **Navigation**: All navbar links scroll to correct sections
 - [ ] **Contact form**: Opens email client with correct recipient
 - [ ] **Certification links**: Oracle and McKinsey links work

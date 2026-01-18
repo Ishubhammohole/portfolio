@@ -1,9 +1,9 @@
 # Cloudflare Pages Deployment Guide
 
 ## Overview
-This portfolio is deployed to Cloudflare Pages using the **free `.pages.dev` domain**.
+This portfolio deploys to Cloudflare Pages using the **free `.pages.dev` domain**.
 
-**Your portfolio will be accessible at: `https://shubhammohole.pages.dev`**
+**Your live URL will be shown in the Cloudflare Pages dashboard after the first successful deploy.**
 
 No domain purchase required - completely free deployment!
 
@@ -19,38 +19,43 @@ No domain purchase required - completely free deployment!
 ### Environment Variables
 None required for this static site.
 
-## Deployment Steps
+## Free Deployment Checklist
+
+Follow these exact UI steps in Cloudflare:
 
 ### Step 1: Create Cloudflare Account
 1. Go to [Cloudflare Pages](https://pages.cloudflare.com/)
 2. **Sign up** for a free Cloudflare account (if you don't have one)
 3. **Verify your email** address
 
-### Step 2: Connect GitHub Repository
-1. Click **Create a project**
-2. Select **Connect to Git**
-3. **Authorize Cloudflare** to access your GitHub account
-4. **Select your portfolio repository** from the list
-5. Click **Begin setup**
+### Step 2: Create Pages Project
+1. **Cloudflare Dashboard** → **Workers & Pages** → **Create application** → **Pages**
+2. **Connect to Git**
+3. **Choose GitHub account** + **select repo**: `Ishubhammohole/portfolio`
+4. Click **Begin setup**
 
 ### Step 3: Configure Build Settings
-1. **Project name**: Enter `shubhammohole` (this becomes your subdomain)
-2. **Production branch**: `main`
-3. **Framework preset**: Select **Vite**
-4. **Build command**: `npm run build`
-5. **Build output directory**: `dist`
-6. **Root directory**: Leave empty (uses repository root)
-7. Click **Save and Deploy**
+1. **Framework preset**: Select **Vite**
+2. **Build command**: `npm run build`
+3. **Build output directory**: `dist`
+4. **Root directory**: Leave empty (uses repository root)
+5. Click **Save and Deploy**
 
-### Step 4: Wait for Deployment
-1. **Cloudflare will build and deploy** your site automatically
-2. **First deployment takes 2-5 minutes**
-3. **You'll see build logs** in real-time
-4. **Success message** will show your live URL
+### Step 4: Get Your Live URL
+1. **Wait for deployment** (2-5 minutes)
+2. **After successful deploy**, your URL will be shown at the top of the dashboard
+3. **Copy the assigned URL** - it will look like `https://<project>.pages.dev`
 
-### Step 5: Access Your Live Portfolio
-Your portfolio will be available at:
-**`https://shubhammohole.pages.dev`**
+**Note**: If `shubhammohole` is not available, Cloudflare will assign a different subdomain. Use the one shown in the dashboard.
+
+## Understanding NXDOMAIN Errors
+
+If you get `NXDOMAIN` for a `.pages.dev` URL, it means:
+- The Pages project hasn't been created/deployed yet, OR
+- The project name is different/not available, OR  
+- You're using a URL that doesn't match the actual assigned subdomain
+
+**Solution**: Deploy first, then use the actual URL shown in your Cloudflare Pages dashboard.
 
 ## Automatic Deployments
 
@@ -68,18 +73,23 @@ The `public/_redirects` file ensures client-side routing works:
 
 This prevents 404 errors when refreshing routes like `/about` or `/projects`.
 
-## Resume Download (Already Configured)
+**Verification**: After `npm run build`, confirm `dist/_redirects` exists with the above content.
+
+## Resume Configuration (Already Configured)
 
 - **Resume file**: `public/shubham_mohole_resume.pdf`
-- **Download URL**: `https://shubhammohole.pages.dev/shubham_mohole_resume.pdf`
+- **Profile configuration**: `src/content/profile.ts` uses `resume.url: "/shubham_mohole_resume.pdf"`
+- **Download URL**: `<YOUR_PAGES_URL>/shubham_mohole_resume.pdf`
 - **Button works automatically** - no additional setup needed
+
+**Verification**: After `npm run build`, confirm `dist/shubham_mohole_resume.pdf` exists.
 
 ## Verification Checklist
 
-After deployment completes, verify:
+After deployment completes, verify using your actual Pages URL:
 
-- [ ] `https://shubhammohole.pages.dev` loads the portfolio
-- [ ] `https://shubhammohole.pages.dev/shubham_mohole_resume.pdf` downloads the resume
+- [ ] Your assigned `.pages.dev` URL loads the portfolio
+- [ ] `<YOUR_PAGES_URL>/shubham_mohole_resume.pdf` downloads the resume
 - [ ] Refreshing any route (e.g., `/about`) doesn't show 404
 - [ ] All sections scroll properly from navigation
 - [ ] Contact form opens email client
@@ -108,11 +118,24 @@ After deployment completes, verify:
 2. **Verify branch is `main`**
 3. **Manual deployment**: Click "Create deployment" in dashboard
 
-## Performance & Features
+## Local Development Notes
 
+This repository's `npm run dev` starts an Express server on port 5000 and can conflict with other services.
+
+**If port 5000 is in use:**
+```bash
+# Kill existing process on port 5000
+lsof -ti:5000 | xargs kill -9
+
+# Or use a different port
+PORT=3000 npm run dev
+```
+
+**Important**: Running locally does NOT make your site live on the internet. Only Cloudflare Pages deployment makes it publicly accessible.
+
+## Performance & Features
 ### Included Free Features
 - **Global CDN** - Fast loading worldwide
-- **HTTPS certificate** - Automatic SSL
 - **Unlimited bandwidth** - No traffic limits
 - **Automatic deployments** - Push to deploy
 - **Build logs** - Debug deployment issues
@@ -137,7 +160,7 @@ If you decide to purchase a custom domain later:
 
 ## Next Steps After Deployment
 
-1. **Share your portfolio**: `https://shubhammohole.pages.dev`
+1. **Share your portfolio**: Use the URL from your Cloudflare Pages dashboard
 2. **Update resume/projects** by pushing to GitHub
 3. **Monitor analytics** in Cloudflare Pages dashboard
 4. **Consider custom domain** when ready (optional)

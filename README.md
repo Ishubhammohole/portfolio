@@ -40,7 +40,9 @@ npm install
 npm run dev
 ```
 
-The app will be available at `http://localhost:5173`
+The app will be available at `http://localhost:5000`
+
+**Note**: If port 5000 is in use, run `lsof -ti:5000 | xargs kill -9` or use `PORT=3000 npm run dev`
 
 ## Building for Production
 
@@ -86,11 +88,11 @@ The portfolio features a modern "cyber architect" aesthetic with:
 
 ## Deployment
 
-This portfolio is deployed on Cloudflare Pages at [shubhammohole.pages.dev](https://shubhammohole.pages.dev) - completely free!
+This portfolio deploys to Cloudflare Pages with a free `.pages.dev` subdomain.
 
 For detailed deployment instructions, see [docs/deploy-cloudflare.md](docs/deploy-cloudflare.md).
 
-**No domain purchase required** - uses the free `.pages.dev` subdomain.
+**No domain purchase required** - uses the free `.pages.dev` subdomain assigned by Cloudflare.
 
 ## License
 
