@@ -1,37 +1,85 @@
 # Release Checklist
 
-Before deploying or sharing the portfolio, verify the following:
+Before deploying or releasing updates to the portfolio, verify these items:
 
 ## Content Verification
 
-- [ ] **Name spelling**: Ensure "Shubham Mohole" appears correctly throughout
-- [ ] **Projects list**: Verify all 5 canonical projects are present:
-  - [ ] Distributed Rate Limiter
-  - [ ] DevSync AI
-  - [ ] LLM-Powered Text-to-Image System
-  - [ ] DjangoCRM (Open Source Contribution)
-  - [ ] Ripple Policy Simulator
+- [ ] **Name spelling**: "Shubham Mohole" (not "Mohale" or other variants)
+- [ ] **Projects list**: Includes exactly 5 canonical projects:
+  - Rate Limiter (Featured)
+  - DevSync AI (Featured) 
+  - Text-to-Image Generator (Featured)
+  - Ripple (Featured)
+  - DjangoCRM (Open Source)
+- [ ] **Contact information**: Email, phone, LinkedIn, GitHub all correct
+- [ ] **Resume file**: `public/shubham_mohole_resume.pdf` exists and is current
 
-## Technical Checks
+## Technical Verification
 
 - [ ] **Build passes**: `npm run build` completes without errors
-- [ ] **Dev server runs**: `npm run dev` starts successfully
-- [ ] **No broken links**: Only show contact/project links if URLs are present in profile.ts
+- [ ] **TypeScript check**: `npm run check` passes (if available)
+- [ ] **No placeholder links**: All links either work or are hidden if URL missing
+- [ ] **Resume download**: Button links to `/shubham_mohole_resume.pdf`
+- [ ] **SPA routing**: `public/_redirects` file exists for client-side routing
 
-## Content Quality
+## Content Source Integrity
 
-- [ ] **No placeholder content**: All sections show real information from profile.ts
-- [ ] **Consistent styling**: All sections use the modern premium dark theme
-- [ ] **Responsive design**: Test on mobile and desktop viewports
+- [ ] **Single source**: All content comes from `src/content/profile.ts`
+- [ ] **No hardcoded content**: Components read from profile object
+- [ ] **Consistent data**: No conflicting information across sections
 
-## Final Steps
+## Deployment Readiness
 
-- [ ] **Git status clean**: No uncommitted changes
-- [ ] **Deployed successfully**: If using hosting service, verify deployment works
-- [ ] **Cross-browser test**: Check in Chrome, Firefox, Safari if possible
+- [ ] **Build output**: `dist/` directory contains all necessary files
+- [ ] **Static assets**: Images, resume PDF copied to `dist/`
+- [ ] **Environment**: No development-only code in production build
+
+## Post-Deployment Verification
+
+After deploying to Cloudflare Pages:
+
+- [ ] **Site loads**: `https://shubhammohole.pages.dev` accessible
+- [ ] **Resume download**: PDF downloads correctly from live site
+- [ ] **Navigation**: All navbar links scroll to correct sections
+- [ ] **Contact form**: Opens email client with correct recipient
+- [ ] **Certification links**: Oracle and McKinsey links work
+- [ ] **Mobile responsive**: Site works on mobile devices
+- [ ] **Performance**: Site loads quickly (< 3 seconds)
+
+## Git Workflow
+
+Before pushing changes:
+
+```bash
+# Pull latest changes
+git pull origin main --rebase
+
+# Verify build works
+npm run build
+
+# Stage and commit changes
+git add .
+git commit -m "descriptive commit message"
+
+# Pull again to avoid conflicts
+git pull origin main --rebase
+
+# Push to trigger deployment
+git push origin main
+```
+
+## Rollback Plan
+
+If issues are found after deployment:
+
+1. **Identify last working commit**: Check git history
+2. **Revert changes**: `git revert <commit-hash>`
+3. **Push revert**: Triggers automatic redeployment
+4. **Verify fix**: Check live site works correctly
 
 ## Notes
 
-- All content should match the canonical facts in `src/content/profile.ts`
-- Contact buttons should only appear if corresponding URLs exist
-- Project links should only show if GitHub/demo URLs are provided
+- Cloudflare Pages automatically deploys on every push to `main`
+- Build logs available in Cloudflare Pages dashboard
+- No manual deployment steps required after initial setup
+- `.pages.dev` domain is free and permanent

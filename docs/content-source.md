@@ -1,36 +1,52 @@
-# Content Source Documentation
+# Portfolio Content Source
 
 ## Single Source of Truth
 
-All portfolio content is centralized in a single file:
+All portfolio content comes from **`src/content/profile.ts`**.
 
-**`src/content/profile.ts`**
-
-This file contains all the canonical information including:
-- Personal information (name, headline, contact details)
-- Education history
-- Work experience
-- Projects
-- Certifications
-- Skills
+This file contains:
+- Personal information (name, contact, location)
+- Resume download URL
+- Education details with coursework
+- Work experience and projects
+- Skills and certifications
+- All links and metadata
 
 ## Updating Content
 
-To update any content on the portfolio website:
+To update any content on the portfolio:
 
 1. **Edit only** `src/content/profile.ts`
-2. All UI components automatically read from this file
-3. No need to edit individual section components
+2. **Do not edit** individual section components
+3. **Run** `npm run build` to verify changes
+4. **Push to GitHub** - deployment happens automatically
+
+## Content Structure
+
+The profile object contains these sections:
+- `displayName` - Name shown throughout the site
+- `resume.url` - Path to resume PDF file
+- `contact` - Email, phone, LinkedIn, GitHub
+- `education` - Degrees with coursework by semester
+- `experience` - Work history and internships
+- `projects` - Featured and open source projects
+- `skills` - Technical skills by category
+- `certifications` - Professional certifications with links
 
 ## Why This Approach?
 
-- **Consistency**: Prevents content mismatches across sections
-- **Maintainability**: Single file to update instead of multiple components
-- **Accuracy**: Ensures all information comes from the same canonical source
-- **Efficiency**: Quick updates without hunting through multiple files
+- **Consistency**: All components read from the same data
+- **Maintainability**: Update once, changes everywhere
+- **Type Safety**: TypeScript ensures data structure integrity
+- **No Duplication**: Eliminates copy-paste errors
 
-## Important Notes
+## Adding New Content
 
-- Do NOT edit hardcoded strings in component files
-- All content should be factual and match resume/LinkedIn exactly
-- Contact links only appear if URLs are provided in the profile file
+When adding new sections or fields:
+1. Update the profile object in `src/content/profile.ts`
+2. Update the component that displays that content
+3. Ensure TypeScript types are correct
+4. Test locally with `npm run dev`
+5. Build and deploy with `npm run build`
+
+**Remember**: Never hardcode content in components - always use the profile data!
