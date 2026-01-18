@@ -10,37 +10,20 @@ export function ExperienceSection() {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
 
-  // Combine experience and education from profile
-  const allExperiences = [
-    ...profile.experience.map(exp => ({
-      type: "work" as const,
-      title: exp.title,
-      company: exp.company,
-      location: exp.location,
-      period: exp.duration,
-      achievements: exp.bullets.map(bullet => ({
-        text: bullet,
-        icon: Briefcase,
-        highlight: ""
-      })),
-      skills: [] // Skills are handled separately in skills section
+  // Only work experience, not education
+  const workExperiences = profile.experience.map(exp => ({
+    type: "work" as const,
+    title: exp.title,
+    company: exp.company,
+    location: exp.location,
+    period: exp.duration,
+    achievements: exp.bullets.map(bullet => ({
+      text: bullet,
+      icon: Briefcase,
+      highlight: ""
     })),
-    ...profile.education.map(edu => ({
-      type: "education" as const,
-      title: edu.degree,
-      company: edu.institution,
-      location: edu.location,
-      period: edu.duration,
-      achievements: [
-        {
-          text: `GPA: ${edu.gpa}`,
-          icon: GraduationCap,
-          highlight: edu.gpa
-        }
-      ],
-      skills: []
-    }))
-  ];
+    skills: [] // Skills are handled separately in skills section
+  }));
 
   return (
     <section id="experience" className="py-24 px-6 lg:px-8 relative" ref={ref}>
@@ -52,14 +35,14 @@ export function ExperienceSection() {
           className="text-3xl md:text-4xl lg:text-5xl font-bold mb-16 text-center"
           data-testid="text-experience-heading"
         >
-          Experience & Education
+          Experience
         </motion.h2>
 
         <div className="relative">
           <div className="absolute left-8 top-0 bottom-0 w-0.5 bg-primary/30" />
 
           <div className="space-y-8">
-            {allExperiences.map((exp, index) => (
+            {workExperiences.map((exp, index) => (
               <motion.div
                 key={`${exp.company}-${index}`}
                 initial={{ opacity: 0, x: -20 }}
@@ -71,11 +54,7 @@ export function ExperienceSection() {
 
                 <Card className="p-6 border-border/50 bg-card/50 backdrop-blur-sm" data-testid={`card-experience-${exp.company.toLowerCase().replace(/\s+/g, '-')}`}>
                   <div className="flex items-start gap-4 mb-4">
-                    {exp.type === "work" ? (
-                      <Briefcase className="h-6 w-6 text-primary flex-shrink-0 mt-1" />
-                    ) : (
-                      <GraduationCap className="h-6 w-6 text-primary flex-shrink-0 mt-1" />
-                    )}
+                    <Briefcase className="h-6 w-6 text-primary flex-shrink-0 mt-1" />
                     <div className="flex-1">
                       <h3 className="text-xl font-bold" data-testid={`text-title-${exp.company.toLowerCase().replace(/\s+/g, '-')}`}>
                         {exp.title}

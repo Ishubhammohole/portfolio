@@ -78,9 +78,11 @@ export function HeroSection() {
               <Mail className="mr-2 h-4 w-4" />
               Get In Touch
             </Button>
-            <Button variant="outline" data-testid="button-resume" className="px-6 py-3">
-              <Download className="mr-2 h-4 w-4" />
-              Download Resume
+            <Button asChild variant="outline" data-testid="button-resume" className="px-6 py-3">
+              <a href={profile.resume.url} download target="_blank" rel="noreferrer">
+                <Download className="mr-2 h-4 w-4" />
+                {profile.resume.label}
+              </a>
             </Button>
           </motion.div>
 

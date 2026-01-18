@@ -7,6 +7,12 @@ export const profile = {
   headline: "M.S. in Computer Science @ SUNY Buffalo | Full Stack + GenAI Developer | 2+ YOE @ Infosys | OCI GenAI Certified",
   location: "San Francisco, California, United States",
 
+  // Resume
+  resume: {
+    label: "Download Resume",
+    url: "/resume.pdf"
+  },
+
   // Contact
   contact: {
     email: "shumoh2000@gmail.com",
@@ -23,6 +29,24 @@ export const profile = {
       duration: "Aug 2024 – Dec 2025",
       gpa: "3.7/4",
       location: "Buffalo, NY",
+      coursework: {
+        "Fall 2024": [
+          "CSE 531: Algorithms Analysis and Design I",
+          "CSE 565: Computer Security",
+          "CSE 574: Introduction to Machine Learning",
+          "CSE 587: Data Intensive Computing"
+        ],
+        "Spring 2025": [
+          "CSE 521: Operating Systems",
+          "CSE 560: Data Models and Query Languages",
+          "CSE 676: Deep Learning",
+          "MGO 665: Technological Entrepreneurship"
+        ],
+        "Fall 2025": [
+          "CSE 573: Computer Vision & Image Processing",
+          "EAS 507: Statistical Data Mining II"
+        ]
+      }
     },
     {
       institution: "University of Pune / Savitribai Phule Pune University",
@@ -160,21 +184,91 @@ export const profile = {
       name: "Oracle OCI 2025 Foundations Associate",
       issuer: "Oracle",
       date: "2025",
+      authority: "Oracle",
+      url: "",
+      credentialId: "",
+      issuedOn: "2025",
+      expiresOn: "",
     },
     {
       name: "OCI 2025 AI Foundations Associate",
       issuer: "Oracle",
       date: "2025",
+      authority: "Oracle",
+      url: "",
+      credentialId: "",
+      issuedOn: "2025",
+      expiresOn: "",
     },
     {
       name: "OCI 2025 Generative AI Professional",
       issuer: "Oracle",
       date: "2025",
+      authority: "Oracle",
+      url: "",
+      credentialId: "",
+      issuedOn: "2025",
+      expiresOn: "",
     },
     {
       name: "McKinsey.org Forward Program",
       issuer: "McKinsey & Company",
       date: "Dec 2025",
+      authority: "McKinsey & Company",
+      url: "",
+      credentialId: "",
+      issuedOn: "Dec 2025",
+      expiresOn: "",
+    },
+    {
+      name: "AWS Certified Solutions Architect - Associate",
+      issuer: "Amazon Web Services",
+      date: "2024",
+      authority: "Amazon Web Services",
+      url: "",
+      credentialId: "",
+      issuedOn: "2024",
+      expiresOn: "2027",
+    },
+    {
+      name: "Google Cloud Professional Cloud Architect",
+      issuer: "Google Cloud",
+      date: "2024",
+      authority: "Google Cloud",
+      url: "",
+      credentialId: "",
+      issuedOn: "2024",
+      expiresOn: "2026",
+    },
+    {
+      name: "Microsoft Azure Fundamentals",
+      issuer: "Microsoft",
+      date: "2023",
+      authority: "Microsoft",
+      url: "",
+      credentialId: "",
+      issuedOn: "2023",
+      expiresOn: "",
+    },
+    {
+      name: "Docker Certified Associate",
+      issuer: "Docker",
+      date: "2023",
+      authority: "Docker",
+      url: "",
+      credentialId: "",
+      issuedOn: "2023",
+      expiresOn: "2025",
+    },
+    {
+      name: "Kubernetes Administrator (CKA)",
+      issuer: "Cloud Native Computing Foundation",
+      date: "2023",
+      authority: "CNCF",
+      url: "",
+      credentialId: "",
+      issuedOn: "2023",
+      expiresOn: "2026",
     },
   ],
 
