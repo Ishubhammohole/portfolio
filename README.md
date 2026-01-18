@@ -84,6 +84,12 @@ The portfolio features a modern "cyber architect" aesthetic with:
 - **LinkedIn**: [linkedin.com/in/shubham-mohole-245a501b2](https://www.linkedin.com/in/shubham-mohole-245a501b2/)
 - **GitHub**: [github.com/Ishubhammohole](https://github.com/Ishubhammohole)
 
+## Deployment
+
+This portfolio is deployed on Cloudflare Pages at [shubhammohole.io](https://shubhammohole.io).
+
+For detailed deployment instructions, see [docs/deploy-cloudflare.md](docs/deploy-cloudflare.md).
+
 ## License
 
 MIT License - feel free to use this as inspiration for your own portfolio!
