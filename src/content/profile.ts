@@ -167,7 +167,7 @@ export const profile = {
       ]
     },
     {
-      title: "Software Developer / Full Stack Developer",
+      title: "Software Developer / Systems Engineer",
       company: "Infosys Ltd",
       duration: "Nov 2022 – Jun 2024",
       location: "Pune, India",
@@ -413,66 +413,69 @@ export const profile = {
         title: "AI Health Screening Platform",
         slug: "ai-health-screening",
         timeframe: "Apr – Jun 2025",
-        summary: "Cloud-deployed AI screening platform with secure APIs, persistence, and end-to-end media inference flows.",
+        summary: "Full-stack AI-powered healthcare screening application with secure backend APIs, ML-based prediction workflows, and production deployment.",
         role: "Full-stack AI platform project",
-        highlight: "Production-minded AI application stack",
+        highlight: "Production-minded AI healthcare application",
         highlights: [
-          "Built JWT-secured REST APIs with PostgreSQL persistence and Dockerized deployment across frontend and backend services.",
-          "Connected media capture, upload, inference, and results delivery into a clear end-to-end AI screening workflow.",
-          "Designed frontend/backend communication for a reliable user-facing health screening experience deployed on Render and Vercel."
+          "Built secure REST APIs with JWT authentication, PostgreSQL persistence, and structured screening workflows.",
+          "Integrated ML prediction pipelines using Random Forest and ResNet18-based analysis with confidence scoring.",
+          "Deployed the frontend on Vercel and backend on Render with Docker-based environment setup.",
+          "Designed the project as an end-to-end applied AI system rather than a standalone model demo."
         ],
-        technologies: ["React", "Node.js", "PostgreSQL", "Docker", "JWT", "Vercel", "Render"],
+        technologies: ["Java", "Spring Boot", "PostgreSQL", "JWT", "Random Forest", "ResNet18", "Docker", "Vercel", "Render", "REST APIs"],
         githubUrl: "",
-        liveUrl: "",
+        liveUrl: "https://healthscreen-ai.vercel.app/",
         detail: {
           architectureOverview:
-            "The platform separates the user-facing frontend, API backend, persistence layer, and inference pipeline so media ingestion and AI processing remain isolated but easy to trace. Authentication and durable storage make the system more representative of a deployable product than a prototype notebook.",
+            "The platform combines a patient-style screening frontend with secure backend APIs, PostgreSQL persistence, and ML-assisted prediction workflows to behave like a deployable healthcare application instead of a standalone notebook demo. The architecture separates user interaction, API processing, stored screening records, and model inference so results can be delivered with traceable confidence scoring and production-minded deployment boundaries.",
           systemFlow: [
-            "Users authenticate through JWT-backed auth flows.",
-            "Frontend captures or uploads media and sends requests to backend REST APIs.",
-            "The backend validates requests, stores metadata in PostgreSQL, and triggers inference handling.",
-            "Inference results are persisted and returned to the frontend for presentation.",
-            "Dockerized services are deployed across Render and Vercel."
+            "Users authenticate through JWT-backed screening flows and submit health input data through the frontend.",
+            "The frontend sends structured screening requests to secure Spring Boot REST APIs.",
+            "The backend validates inputs, persists screening records in PostgreSQL, and routes requests into prediction workflows.",
+            "Random Forest and ResNet18-based analysis generate prediction outputs with confidence scoring.",
+            "Results are stored and returned to the frontend for user-facing presentation and follow-up review.",
+            "The frontend is deployed on Vercel while Dockerized backend services run on Render."
           ],
           technicalChallenges: [
-            "Managing secure media upload and authenticated API flows.",
-            "Keeping inference latency and UX acceptable while preserving result integrity.",
-            "Coordinating frontend/backend deployment boundaries across hosting providers."
+            "Designing healthcare-style screening flows that feel product-ready instead of a basic model wrapper.",
+            "Integrating multiple ML prediction paths while keeping outputs understandable through confidence scoring.",
+            "Maintaining secure authenticated APIs, durable persistence, and smooth cross-platform deployment."
           ],
           scalingDecisions: [
-            "Separated frontend and backend deployment surfaces for clearer scaling paths.",
-            "Used PostgreSQL for durable result persistence and audit-friendly data access.",
-            "Containerized backend services for consistent deployment behavior."
+            "Separated frontend and backend deployment surfaces so the UI and API stack can scale independently.",
+            "Used PostgreSQL for durable screening record persistence and future audit-friendly access patterns.",
+            "Containerized backend services with Docker for predictable environment setup and deployment."
           ],
           tradeoffs: [
-            "Cross-platform deployment adds operational complexity compared with a single hosting target.",
-            "Media-heavy AI workflows require careful balancing of latency, storage cost, and UX smoothness."
+            "Splitting services across Vercel and Render improves deployment flexibility but adds operational coordination overhead.",
+            "Combining classical ML and deep-learning-based analysis increases capability but adds complexity around model integration and latency."
           ],
           reliabilityFeatures: [
-            "JWT-based authentication for protected application flows.",
-            "REST APIs with persisted job and result state.",
-            "Dockerized deployment for environment consistency."
+            "JWT-based authentication protecting screening and results flows.",
+            "Structured REST APIs with persisted screening state in PostgreSQL.",
+            "Confidence-scored prediction outputs for clearer downstream interpretation.",
+            "Dockerized backend runtime for consistent deployment behavior."
           ],
           observability: [
-            "API and inference pipeline status visibility across frontend and backend handoffs.",
-            "Structured service boundaries for debugging media upload or inference failures."
+            "Clear separation between frontend, API, database, and inference layers makes failures easier to isolate.",
+            "Structured backend workflows support debugging across authenticated screening, persistence, and prediction handoffs."
           ],
           benchmarks: [
-            { label: "Auth model", value: "JWT", hint: "Protected screening flows", tone: "primary" },
-            { label: "Persistence", value: "PostgreSQL", hint: "Durable screening records", tone: "success" },
-            { label: "Deployment", value: "Dockerized", hint: "Render + Vercel architecture", tone: "neutral" }
+            { label: "Auth model", value: "JWT", hint: "Protected patient-style screening flows", tone: "primary" },
+            { label: "Prediction stack", value: "RF + ResNet18", hint: "Hybrid ML-assisted analysis", tone: "success" },
+            { label: "Deployment", value: "Vercel + Render", hint: "Frontend and backend split deployment", tone: "neutral" }
           ],
           screenshots: [
-            "Architecture diagram of frontend, backend, persistence, and inference pipeline.",
-            "Media capture and backend communication flow.",
-            "Deployment topology for Render and Vercel."
+            "Architecture diagram of screening frontend, Spring Boot APIs, PostgreSQL, and ML prediction workflows.",
+            "Secure screening flow from user submission through confidence-scored prediction output.",
+            "Deployment topology showing Vercel frontend and Dockerized Render backend."
           ],
-          stack: ["React", "Node.js", "PostgreSQL", "Docker", "JWT", "REST APIs", "Render", "Vercel"],
+          stack: ["Java", "Spring Boot", "PostgreSQL", "JWT", "Random Forest", "ResNet18", "Docker", "REST APIs", "Render", "Vercel"],
           callouts: [
-            { label: "Security", value: "JWT auth" },
+            { label: "API Layer", value: "Spring Boot REST" },
             { label: "Persistence", value: "PostgreSQL" },
-            { label: "Deployment", value: "Dockerized" },
-            { label: "Pipeline", value: "Media + inference flow" }
+            { label: "ML Stack", value: "RF + ResNet18" },
+            { label: "Deployment", value: "Vercel + Render" }
           ]
         }
       },
