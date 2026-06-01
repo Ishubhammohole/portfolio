@@ -78,7 +78,7 @@ export const profile = {
 
   resume: {
     label: "Download Resume",
-    url: "/shubham_mohole_resume.pdf"
+    url: "/Shubham_Mohole_Resume.pdf"
   },
 
   contact: {

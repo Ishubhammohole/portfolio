@@ -109,7 +109,7 @@ export function HeroSection() {
               Get In Touch
             </Button>
             <Button asChild variant="outline" data-testid="button-resume" className="px-6 py-3">
-              <a href={profile.resume.url} download target="_blank" rel="noreferrer">
+              <a href={profile.resume.url} download="Shubham_Mohole_Resume.pdf" target="_blank" rel="noreferrer">
                 <Download className="mr-2 h-4 w-4" />
                 {profile.resume.label}
               </a>
