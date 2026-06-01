@@ -412,7 +412,7 @@ export const profile = {
       {
         title: "AI Health Screening Platform",
         slug: "ai-health-screening",
-        timeframe: "Apr – Jun 2025",
+        timeframe: "Apr 2026",
         summary: "Full-stack AI-powered healthcare screening application with secure backend APIs, ML-based prediction workflows, and production deployment.",
         role: "Full-stack AI platform project",
         highlight: "Production-minded AI healthcare application",
