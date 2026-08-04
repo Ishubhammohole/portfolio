@@ -55,7 +55,7 @@ export const profile = {
     eyebrow: "Backend & Distributed Systems Engineer",
     chips: [
       "M.S. in Computer Science @ SUNY Buffalo",
-      "2+ YOE @ Infosys",
+      "4+ YOE @ Infosys",
       "OCI GenAI Certified"
     ],
     quickTags: [
@@ -156,7 +156,7 @@ export const profile = {
     {
       title: "Research Assistant (Robotics & AI)",
       company: "University at Buffalo",
-      duration: "Aug 2025 – Present",
+      duration: "Aug 2024 – Present",
       location: "Buffalo, NY",
       skills: ["Python", "Experiment Design", "Reliability Evaluation", "Data Pipelines"],
       bullets: [
@@ -736,7 +736,7 @@ export const profile = {
 
   about: {
     summary:
-      "Software engineer with 2+ years of experience building production systems across fintech, internal platforms, and AI-enabled products. My strongest work sits at the intersection of scalable backend engineering, distributed systems reliability, and practical AI application delivery.",
+      "Software engineer with 4+ years of experience building production systems across fintech, internal platforms, and AI-enabled products. My strongest work sits at the intersection of scalable backend engineering, distributed systems reliability, and practical AI application delivery.",
     bullets: [
       "At Infosys, built and scaled Java/Spring Boot microservices powering 5M+ daily financial transactions with strong attention to latency, resilience, and safe deployments.",
       "I enjoy backend problems that involve retries, queueing, caching, distributed coordination, observability, and performance tuning under real workload constraints.",
